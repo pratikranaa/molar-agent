@@ -78,8 +78,9 @@
   .hero .reassure span{display:inline-flex;align-items:center;gap:8px}
   .hero .reassure span::before{content:"✓";color:var(--forest);font-weight:700}
 
-  /* clones grid backdrop */
-  .grid-bg{position:absolute;right:-40px;top:60px;width:700px;height:560px;opacity:.95;pointer-events:none}
+  /* clones grid backdrop — match page bone (#f4f1ea), not paper */
+  .grid-bg{position:absolute;right:-40px;top:60px;width:700px;height:560px;opacity:.52;pointer-events:none}
+  .grid-bg svg{width:100%;height:100%}
 
   /* twin glyph as recurring motif */
   .twin{display:inline-block;position:relative;width:18px;height:18px;vertical-align:-3px;margin:0 6px}
@@ -332,12 +333,12 @@
     <svg viewBox="0 0 700 560" fill="none">
       <defs>
         <radialGradient id="haze" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stop-color="#fbf9f3" stop-opacity="0"/>
-          <stop offset="100%" stop-color="#fbf9f3" stop-opacity=".85"/>
+          <stop offset="0%" stop-color="#f4f1ea" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#f4f1ea" stop-opacity=".92"/>
         </radialGradient>
       </defs>
       <!-- Snapshot ribbon: concentric nested tenants, each one slightly time-offset -->
-      <g stroke="#2a4f8c" stroke-width="0.7" opacity="0.45" fill="none">
+      <g stroke="#2a4f8c" stroke-width="0.7" opacity="0.28" fill="none">
         <ellipse cx="360" cy="280" rx="260" ry="180"/>
         <ellipse cx="360" cy="280" rx="220" ry="152" transform="rotate(-4 360 280)"/>
         <ellipse cx="360" cy="280" rx="180" ry="126" transform="rotate(-8 360 280)"/>
@@ -346,7 +347,7 @@
         <ellipse cx="360" cy="280" rx="60" ry="42" transform="rotate(-20 360 280)"/>
       </g>
       <!-- snapshot nodes around the outer ring -->
-      <g fill="#2a4f8c" opacity="0.75">
+      <g fill="#2a4f8c" opacity="0.45">
         <circle cx="620" cy="280" r="3"/>
         <circle cx="100" cy="280" r="3"/>
         <circle cx="360" cy="100" r="3"/>
@@ -357,7 +358,7 @@
         <rect x="346" y="266" width="14" height="14" fill="#15120c" rx="2"/>
         <rect x="353" y="273" width="14" height="14" fill="#2a4f8c" rx="2"/>
       </g>
-      <g font-family="Geist Mono, monospace" font-size="9" fill="#6b6253" opacity="0.7">
+      <g font-family="Geist Mono, monospace" font-size="9" fill="#6b6253" opacity="0.55">
         <text x="626" y="284">snap_a3f · now</text>
         <text x="40" y="284">snap_8f3 · t−5m</text>
         <text x="322" y="94">snap_2k9 · t+30d</text>
