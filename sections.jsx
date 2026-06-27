@@ -51,12 +51,6 @@ function Hero({ headlineH1, headlineSub }) {
   return (
     <section className="hero">
       <div className="frame">
-        <FadeIn duration={700} blur={4}><div className="hero-meta">
-          <span className="dot"></span>
-          <span>Live</span>
-          <span style={{flex:1, height:1, background:'var(--rule)'}}></span>
-          <span>Public beta</span>
-        </div></FadeIn>
         <div className="hero-grid">
           <StaggerContainer staggerDelay={90} baseDelay={60}>
             <FadeUp y={18} blur={10} duration={1050}><h1 className="hero-headline">{h1}</h1></FadeUp>
@@ -449,71 +443,30 @@ function StatefulClones() {
   ]/*CLONES-REGISTRY-END*/;
 
   return (
-    <section className="section" id="clones">
-      <div className="frame clone-grid">
-        <div>
+    <section className="section section--clones" id="clones">
+      <div className="frame">
+        <div className="clone-section-head">
           <FadeUp y={14}><div className="section-meta">
             <span className="num">05 — Stateful clones</span>
             <span className="rule"></span>
             <span>Safe by default</span>
           </div></FadeUp>
-          <FadeUp y={14}><h2 className="section-title">
-            Test against real APIs<br/>
-            <em>without hitting them.</em>
+          <FadeUp y={14}><h2 className="section-title section-title--wide">
+            Test against real APIs <em>without hitting{'\u00a0'}them.</em>
           </h2></FadeUp>
-          <FadeUp y={12}><p className="section-lede">
+          <FadeUp y={12}><p className="section-lede section-lede--wide">
             Molar gives each test run a stateful mirror of the services your app depends on. Same endpoints,
             same failure shapes, controllable state. No fake happy path, and no production blast radius.
           </p></FadeUp>
         </div>
 
-        <ScaleIn delay={60}><div className="clone-panel" aria-label="Example cloned services">
-          <div className="clone-panel-head">
-            <span>molar clone registry</span>
-            <span>live shadow</span>
-          </div>
-          <div className="clone-list">
-            {integrations.map(([service, state]) => (
-              <div className="clone-row" key={service}>
-                <span>{service}</span>
-                <span><i></i>{state}</span>
-              </div>
-            ))}
-          </div>
-        </div></ScaleIn>
+        <ScaleIn delay={60}><CloneCatalogPanel integrations={integrations} /></ScaleIn>
       </div>
     </section>
   );
 }
 
-function CrossAppJourney() {
-  return (
-    <section className="section" id="journeys">
-      <div className="frame journey-grid">
-        <div>
-          <FadeUp y={14}><div className="section-meta">
-            <span className="num">06 — Cross-app journeys</span>
-            <span className="rule"></span>
-            <span>What users actually do</span>
-          </div></FadeUp>
-          <FadeUp y={14}><h2 className="section-title">
-            Your real flow leaves<br/>
-            <em>your app.</em>
-          </h2></FadeUp>
-          <FadeUp y={12}><p className="section-lede">
-            Modern products cross checkout, messaging, webhooks, and databases in one user journey.
-            Molar tests the whole chain with cloned providers — and you author each scenario in plain
-            English markdown your team can actually read and edit.
-          </p></FadeUp>
-        </div>
-
-        <FadeUp delay={140} y={16} blur={8}><div className="journey-right">
-          <div className="journey-caption">
-            <span className="journey-file">scenarios/checkout.molar.md</span>
-            <span className="journey-tag">Plain English · version-controlled · diff-able</span>
-          </div>
-          <div className="journey-card">
-            <pre>{`# scenarios/checkout.molar.md
+const JOURNEY_SCENARIO = `# scenarios/checkout.molar.md
 1. Visit /checkout
 2. Fill email + plan = Pro
 3. Submit checkout form
@@ -521,9 +474,199 @@ function CrossAppJourney() {
 5. Click verify link back into app
 6. Clone Stripe records charge $99
 7. /webhooks/stripe updates DB row
-8. Expect receipt page + no real customer touched`}</pre>
-          </div>
+8. Expect receipt page + no real customer touched`;
+
+const JOURNEY_PLAYWRIGHT = `// tests/checkout.spec.ts — exported by Cartographer
+import { test, expect } from '@playwright/test';
+
+test('checkout · Pro plan + clone providers', async ({ page, molar }) => {
+  await molar.useClones(['stripe', 'whatsapp']);
+
+  await page.goto('/checkout');
+  await page.fill('#email', 'qa+pro@acme.dev');
+  await page.selectOption('[name=plan]', 'pro');
+  await page.click('[data-testid=submit-checkout]');
+
+  const msg = await molar.clone('whatsapp').lastMessage();
+  expect(msg.body).toContain('verify');
+  await page.goto(msg.link);
+
+  const charge = await molar.clone('stripe').lastCharge();
+  expect(charge.amount).toBe(9900);
+
+  await molar.waitForWebhook('/webhooks/stripe');
+  await expect(page.getByTestId('receipt')).toBeVisible();
+});`;
+
+function JourneyScenarioPanel() {
+  const [pos, setPos] = React.useState(72);
+  const [autoPlay, setAutoPlay] = React.useState(true);
+  const [isDragging, setIsDragging] = React.useState(false);
+  const pauseUntil = React.useRef(0);
+  const dragging = React.useRef(false);
+  const compareRef = React.useRef(null);
+
+  const pauseAuto = React.useCallback((ms) => {
+    pauseUntil.current = Date.now() + (ms || 12000);
+  }, []);
+
+  const resumeAuto = React.useCallback(() => {
+    setAutoPlay(true);
+    pauseUntil.current = 0;
+  }, []);
+
+  const stopAuto = React.useCallback(() => {
+    setAutoPlay(false);
+    pauseUntil.current = 0;
+  }, []);
+
+  const setPosFromClientX = React.useCallback((clientX) => {
+    const el = compareRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    setPos(Math.max(4, Math.min(96, pct)));
+  }, []);
+
+  React.useEffect(() => {
+    if (!autoPlay) return undefined;
+    const id = window.setInterval(() => {
+      if (dragging.current || Date.now() < pauseUntil.current) return;
+      setPos((p) => (p > 50 ? 22 : 78));
+    }, 5200);
+    return () => window.clearInterval(id);
+  }, [autoPlay]);
+
+  const onComparePointerDown = (e) => {
+    if (e.button !== 0) return;
+    dragging.current = true;
+    setIsDragging(true);
+    pauseAuto(16000);
+    setPosFromClientX(e.clientX);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onComparePointerMove = (e) => {
+    if (!dragging.current) return;
+    setPosFromClientX(e.clientX);
+  };
+
+  const onComparePointerEnd = (e) => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    setIsDragging(false);
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  const jumpScenario = () => {
+    setPos(88);
+    pauseAuto(12000);
+  };
+
+  const jumpPlaywright = () => {
+    setPos(12);
+    pauseAuto(12000);
+  };
+
+  const scenarioActive = pos >= 50;
+  const compareStyle = { '--journey-pos': String(pos) };
+
+  return (
+    <div className={'journey-panel' + (isDragging ? ' is-dragging' : '')}>
+      <div className="journey-panel-head">
+        <button
+          type="button"
+          className={'journey-panel-label' + (scenarioActive ? ' is-active' : '')}
+          onClick={jumpScenario}
+        >
+          checkout.molar.md
+        </button>
+        <button
+          type="button"
+          className={'journey-panel-label' + (!scenarioActive ? ' is-active' : '')}
+          onClick={jumpPlaywright}
+        >
+          checkout.spec.ts
+        </button>
+      </div>
+
+      <div className="journey-panel-meta">
+        <span className="journey-tag">
+          {scenarioActive ? 'Plain English · diff-able' : 'Playwright export · CI-ready'}
+        </span>
+        <button
+          type="button"
+          className={'journey-autoplay' + (autoPlay ? ' is-on' : '')}
+          onClick={() => (autoPlay ? stopAuto() : resumeAuto())}
+          aria-pressed={autoPlay}
+        >
+          <span className="journey-autoplay-dot" aria-hidden="true" />
+          {autoPlay ? 'Auto compare on' : 'Auto compare off'}
+        </button>
+      </div>
+
+      <div
+        ref={compareRef}
+        className="journey-card journey-compare"
+        style={compareStyle}
+        role="slider"
+        aria-label="Compare scenario markdown and Playwright export"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(pos)}
+        aria-valuetext={scenarioActive ? 'Showing scenario' : 'Showing Playwright'}
+        onPointerDown={onComparePointerDown}
+        onPointerMove={onComparePointerMove}
+        onPointerUp={onComparePointerEnd}
+        onPointerCancel={onComparePointerEnd}
+      >
+        <div className="journey-compare-layer journey-compare-layer--back">
+          <pre className="journey-compare-pre journey-compare-pre--code">{JOURNEY_PLAYWRIGHT}</pre>
+        </div>
+        <div className="journey-compare-layer journey-compare-layer--front">
+          <pre className="journey-compare-pre journey-compare-pre--scenario">{JOURNEY_SCENARIO}</pre>
+        </div>
+        <div className="journey-compare-divider" aria-hidden="true">
+          <span className="journey-compare-knob">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M4 3.5 1 7l3 3.5M10 3.5 13 7l-3 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CrossAppJourney() {
+  return (
+    <section className="section" id="journeys">
+      <div className="frame">
+        <FadeUp y={14}><div className="section-meta journey-section-meta">
+          <span className="num">06 — Cross-app journeys</span>
+          <span className="rule"></span>
+          <span>What users actually do</span>
         </div></FadeUp>
+
+        <div className="journey-grid">
+          <div>
+            <FadeUp y={14}><h2 className="section-title">
+              Your real flow leaves<br/>
+              <em>your app.</em>
+            </h2></FadeUp>
+            <FadeUp y={12}><p className="section-lede">
+              Modern products cross checkout, messaging, webhooks, and databases in one user journey.
+              Molar tests the whole chain with cloned providers — and you author each scenario in plain
+              English markdown your team can actually read and edit.
+            </p></FadeUp>
+          </div>
+
+          <FadeUp delay={140} y={16} blur={8}><div className="journey-right">
+            <JourneyScenarioPanel />
+          </div></FadeUp>
+        </div>
       </div>
     </section>
   );
@@ -734,21 +877,7 @@ function CTA() {
         </StaggerContainer>
         </div>
       </section>
-      <footer>
-        <div className="frame foot-inner">
-          <div>© 2026 Molar Labs · Bengaluru</div>
-          <div style={{display:'flex', gap:24}}>
-            <a href="/qa-agent" style={{color:'inherit', textDecoration:'none'}}>QA Agent</a>
-            <a href="/vs/cypress" style={{color:'inherit', textDecoration:'none'}}>vs Cypress</a>
-            <a href="/vs/playwright" style={{color:'inherit', textDecoration:'none'}}>vs Playwright</a>
-            <a href="/integrations/github-actions" style={{color:'inherit', textDecoration:'none'}}>GitHub Actions</a>
-            <a href="/docs" style={{color:'inherit', textDecoration:'none'}}>Docs</a>
-            <a href="/thesis" style={{color:'inherit', textDecoration:'none'}}>Thesis</a>
-            <a href="mailto:founders@molar.it" style={{color:'inherit', textDecoration:'none'}}>Email</a>
-            <a href="https://github.com/pratikranaa/molar-it" style={{color:'inherit', textDecoration:'none'}}>GitHub</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

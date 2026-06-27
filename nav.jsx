@@ -1,5 +1,33 @@
 // Shared site nav — loaded on the homepage and static subpages.
 
+const CALENDLY_URL = 'https://calendly.com/pratikrana/30min';
+
+function handleCalendlyClick(e) {
+  if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+    e.preventDefault();
+    window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+  }
+}
+
+function useCalendlyAssets() {
+  React.useEffect(() => {
+    if (!document.querySelector('link[data-molar-calendly]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://assets.calendly.com/assets/external/widget.css';
+      link.dataset.molarCalendly = '1';
+      document.head.appendChild(link);
+    }
+    if (!document.querySelector('script[data-molar-calendly]')) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      script.dataset.molarCalendly = '1';
+      document.body.appendChild(script);
+    }
+  }, []);
+}
+
 const PRIMARY_NAV = [
   { href: '/#how', label: 'How it works' },
   { href: '/#pricing', label: 'Pricing' },
@@ -7,6 +35,7 @@ const PRIMARY_NAV = [
 ];
 
 const MORE_NAV = [
+  { href: '/changelog', label: 'Changelog' },
   { href: '/#faq', label: 'FAQ' },
   { href: '/docs', label: 'Docs' },
   { href: '/thesis', label: 'Thesis' },
@@ -108,10 +137,46 @@ function handleHashNavClick(e, href, onAfter) {
 }
 
 function NavDropdown({ label, items, onNavigate, rich }) {
+  const [open, setOpen] = React.useState(false);
+  const closeTimer = React.useRef(null);
+  // 200–300ms is the usual hover-menu grace period — enough to reach a link, not sluggish.
+  const CLOSE_DELAY_MS = 280;
   const menuClass = 'nav-dropdown-menu' + (rich ? ' nav-dropdown-menu--rich' : '');
 
+  const clearCloseTimer = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const openMenu = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimer.current = setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
+  };
+
+  React.useEffect(() => () => clearCloseTimer(), []);
+
+  const rootClass =
+    'nav-dropdown' +
+    (rich ? ' nav-dropdown--rich' : '') +
+    (open ? ' nav-dropdown--open' : '');
+
   return (
-    <div className={'nav-dropdown' + (rich ? ' nav-dropdown--rich' : '')}>
+    <div
+      className={rootClass}
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
+      onFocusCapture={openMenu}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) scheduleClose();
+      }}
+    >
       <button
         type="button"
         className="nav-dropdown-trigger"
@@ -149,6 +214,7 @@ function NavDropdown({ label, items, onNavigate, rich }) {
 
 function Nav() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  useCalendlyAssets();
 
   React.useEffect(() => {
     const mq = window.matchMedia('(min-width: 901px)');
@@ -195,6 +261,13 @@ function Nav() {
           </div>
 
           <div className="nav-end">
+            <a
+              href={CALENDLY_URL}
+              className="btn btn-ghost nav-demo-btn"
+              onClick={handleCalendlyClick}
+            >
+              Book a demo
+            </a>
             <a href="https://app.molar.it" className="btn btn-primary nav-cta-btn">Get started →</a>
             <button
               type="button"
@@ -253,6 +326,13 @@ function Nav() {
               ))}
             </div>
             <div className="nav-cta nav-mobile-cta">
+              <a
+                href={CALENDLY_URL}
+                className="btn btn-ghost"
+                onClick={(e) => { handleCalendlyClick(e); closeMenu(); }}
+              >
+                Book a demo
+              </a>
               <a href="https://app.molar.it" className="btn btn-primary" onClick={closeMenu}>
                 Get started →
               </a>
@@ -269,3 +349,5 @@ window.PRIMARY_NAV = PRIMARY_NAV;
 window.PRODUCTS_NAV = PRODUCTS_NAV;
 window.MORE_NAV = MORE_NAV;
 window.scrollToSection = scrollToSection;
+window.handleCalendlyClick = handleCalendlyClick;
+window.CALENDLY_URL = CALENDLY_URL;

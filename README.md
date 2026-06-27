@@ -41,7 +41,7 @@ See [`seo-launch-kit/00-START-HERE.txt`](seo-launch-kit/00-START-HERE.txt) for S
 
 ## Contact
 
-- founders@molar.it
+- pratik@molar.it
 - [LinkedIn](https://www.linkedin.com/in/ranapratik/)
 
 © 2026 Molar Labs · Bengaluru

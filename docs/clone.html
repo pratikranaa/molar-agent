@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clone docs — Molar</title>
+  <meta name="description" content="Per-clone reference for Molar stateful service clones — connect, seeds, coverage, and tools." />
+  <link rel="canonical" href="https://molar.it/docs/clones" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .doc-page { padding: 64px 0 96px; border-bottom: 1px solid var(--rule); }
+    .doc-meta { display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 40px; }
+    .doc-meta .num { color: var(--signal); font-weight: 500; }
+    .doc-meta .rule { flex: 1; height: 1px; background: var(--rule); }
+    .doc-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 80px; align-items: start; }
+    .doc-sidebar { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink-3); max-height: calc(100vh - 120px); overflow: auto; }
+    .doc-side-block { display: flex; flex-direction: column; gap: 8px; }
+    .doc-side-label { color: var(--signal); font-weight: 500; }
+    .doc-side-meta { color: var(--ink-2); font-size: 10.5px; letter-spacing: 0.10em; line-height: 1.45; text-transform: none; }
+    .doc-toc { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--rule); padding-top: 18px; }
+    .doc-toc a { color: var(--ink-3); text-decoration: none; font-size: 11px; letter-spacing: 0.08em; transition: color 160ms ease; line-height: 1.45; text-transform: none; }
+    .doc-toc a:hover, .doc-toc a.is-active { color: var(--signal); }
+    .doc-toc a span { color: var(--ink-3); margin-right: 8px; opacity: 0.65; }
+    .doc-toc-clones { max-height: 280px; overflow: auto; }
+    .doc-article { display: flex; flex-direction: column; gap: 56px; }
+    .doc-title { font-family: 'Instrument Serif', serif; font-size: clamp(40px, 5vw, 64px); line-height: 0.98; letter-spacing: -0.025em; max-width: 20ch; }
+    .doc-lede { margin-top: 20px; max-width: 62ch; font-size: 18px; line-height: 1.55; color: var(--ink-2); }
+    .doc-summary { margin-top: 14px; max-width: 62ch; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+    .clone-doc-id { margin-top: 18px; font-size: 12px; color: var(--ink-3); }
+    .clone-doc-id code { color: var(--ink); }
+    .doc-step { display: flex; flex-direction: column; gap: 14px; padding: 28px 30px 30px; border: 1px solid var(--rule); background: var(--bone); }
+    .doc-step-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal); font-weight: 500; }
+    .doc-step h2 { font-family: 'Instrument Serif', serif; font-size: 28px; line-height: 1.08; letter-spacing: -0.018em; font-weight: 400; }
+    .doc-step p { color: var(--ink-2); font-size: 15.5px; line-height: 1.6; max-width: 62ch; }
+    .clone-doc-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+    .clone-doc-table th { text-align: left; vertical-align: top; width: 130px; padding: 10px 16px 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+    .clone-doc-table td { padding: 10px 0; color: var(--ink-2); border-top: 1px solid var(--rule-soft); }
+    .clone-doc-list { margin: 0; padding-left: 1.2em; color: var(--ink-2); font-size: 15px; line-height: 1.65; }
+    .clone-doc-tool-group { margin-top: 20px; }
+    .clone-doc-tool-group h3 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; font-weight: 500; }
+    .clone-doc-tools-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .clone-doc-tools-table th { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+    .clone-doc-tools-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule-soft); color: var(--ink-2); vertical-align: top; }
+    .clone-doc-tools-table td code { font-size: 12px; color: var(--ink); }
+    .doc-back { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); text-decoration: none; }
+    .doc-back:hover { color: var(--signal); }
+  </style>
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <div id="nav-root"></div>
+  <div id="clone-doc-root"></div>
+
+  <script src="../clone-docs-data.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="../nav.jsx"></script>
+  <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script type="text/babel" src="../docs-clone.jsx"></script>
+</body>
+</html>
