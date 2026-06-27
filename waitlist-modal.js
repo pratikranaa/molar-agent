@@ -32,6 +32,46 @@
       headline: 'Molar <em>early access.</em>',
       lede: 'The autonomous QA platform is rolling out in waves. Join the waitlist and we will reach out when your workspace is ready.',
     },
+    blog: {
+      kicker: 'Early access',
+      headline: 'Get <em>early access.</em>',
+      lede: 'Join the waitlist for Molar — stateful clones, autonomous tests, and production guard. We will reach out when your spot opens.',
+    },
+    docs: {
+      kicker: 'Early access',
+      headline: 'Start with <em>Molar.</em>',
+      lede: 'Docs are live — product access rolls out in waves. Join the waitlist and we will reach out when you can run your first scenario.',
+    },
+    thesis: {
+      kicker: 'Molar',
+      headline: 'Join the <em>waitlist.</em>',
+      lede: 'If the verification loop resonates, join early access. We will reach out when your workspace is ready.',
+    },
+    changelog: {
+      kicker: 'Early access',
+      headline: 'Try what we <em>shipped.</em>',
+      lede: 'Join the waitlist to get access to Cartographer, Clones, Guard, and Trace as spots open.',
+    },
+    integrations: {
+      kicker: 'GitHub Actions',
+      headline: 'Gate PRs with <em>Molar.</em>',
+      lede: 'Join the waitlist for Guard and CI gating — we will reach out when your repo can install the GitHub App.',
+    },
+    'vs-wiremock': {
+      kicker: 'Clones',
+      headline: 'Try Clones <em>early access.</em>',
+      lede: 'Stateful Stripe, Twilio, and S3 clones — join the waitlist and we will reach out when you can spawn your first clone.',
+    },
+    'vs-checkly': {
+      kicker: 'Guard',
+      headline: 'Try Guard <em>early access.</em>',
+      lede: 'PR gating plus safe production synthetics — join the waitlist and we will reach out when your workspace is ready.',
+    },
+    'vs-playwright-trace': {
+      kicker: 'Trace',
+      headline: 'Try Trace <em>early access.</em>',
+      lede: 'Forensic test replay and MCP debugging — join the waitlist and we will reach out when your spot opens.',
+    },
   };
 
   let root;

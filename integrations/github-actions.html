@@ -44,8 +44,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../seo-pages.css" />
+  <link rel="stylesheet" href="../waitlist-modal.css" />
 </head>
-<body>
+<body data-waitlist-surface="integrations">
   <div class="paper-grain"></div>
   <div id="nav-root"></div>
   <main class="doc-page">
@@ -89,7 +90,7 @@
             <h2><span class="doc-section-num">03 — Checks</span>What developers <em>see on PRs</em></h2>
             <p>Failed runs surface the exact scenario, git diff correlation, and a replayable trace (DOM, network, console, clone activity). Confirmed regressions can open a fix PR via Mender. Passing runs unblock merge like any required GitHub check.</p>
             <div class="doc-cta">
-              <a href="/#get-started" class="btn btn-primary">Get started →</a>
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
               <a href="/vs/playwright" class="btn btn-ghost">Molar vs Playwright</a>
             </div>
           </section>
@@ -111,7 +112,9 @@
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script src="../site-config.js"></script>
   <script type="text/babel" src="../nav.jsx"></script>
   <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script src="../waitlist-modal.js"></script>
 </body>
 </html>

@@ -76,7 +76,7 @@ See [`seo-launch-kit/00-START-HERE.txt`](seo-launch-kit/00-START-HERE.txt) for S
 **Sitemap:** regenerate after clone catalog changes:
 
 ```bash
-node scripts/gen-sitemap.mjs   # 48 URLs: main site + surfaces + 28 clone docs
+node scripts/gen-sitemap.mjs   # 51 URLs: main site + surfaces + 28 clone docs + comparisons
 node scripts/gen-clone-routes.mjs
 ```
 

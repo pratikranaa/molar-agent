@@ -39,6 +39,9 @@
     { "source": "/qa-agent", "destination": "/qa-agent.html" },
     { "source": "/vs/cypress", "destination": "/vs/cypress.html" },
     { "source": "/vs/playwright", "destination": "/vs/playwright.html" },
+    { "source": "/vs/wiremock", "destination": "/vs/wiremock.html" },
+    { "source": "/vs/checkly", "destination": "/vs/checkly.html" },
+    { "source": "/vs/playwright-trace", "destination": "/vs/playwright-trace.html" },
     { "source": "/integrations/github-actions", "destination": "/integrations/github-actions.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/test-stripe-without-real-cards", "destination": "/blog/test-stripe-without-real-cards.html" }

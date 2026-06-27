@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molar Guard vs Checkly — PR Gating + Synthetics vs Monitoring</title>
+  <meta name="description" content="Compare Molar Guard and Checkly. Guard gates PRs with affected-scenario E2E tests, runs safe production synthetics via Clones, and drafts fix PRs with Mender. Checkly focuses on Playwright synthetics and uptime." />
+  <meta property="og:title" content="Molar Guard vs Checkly — PR Gating + Synthetics vs Monitoring" />
+  <meta property="og:description" content="Checkly monitors production with Playwright scripts. Guard adds PR gating, Clones-backed safe synthetics, and Mender auto-fix — one QA-native release guard." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://molar.it/vs/checkly" />
+  <meta property="og:image" content="https://molar.it/og.png" />
+  <meta property="og:site_name" content="Molar" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Molar Guard vs Checkly" />
+  <meta name="twitter:image" content="https://molar.it/og.png" />
+  <link rel="canonical" href="https://molar.it/vs/checkly" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Molar", "item": "https://molar.it/" },
+          { "@type": "ListItem", "position": 2, "name": "Guard vs Checkly", "item": "https://molar.it/vs/checkly" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Molar Guard vs Checkly",
+        "url": "https://molar.it/vs/checkly",
+        "description": "Comparison of Molar Guard release gating vs Checkly synthetic monitoring."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Molar Guard a Checkly alternative?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For teams that need more than uptime checks: yes. Checkly excels at Playwright-native production synthetics. Molar Guard adds PR gating with affected-scenario selection, Clones-backed safe synthetics that never touch real customers, and Mender fix PRs when checks fail."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Checkly gate pull requests?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Checkly can integrate with CI, but its core product is scheduled synthetic monitoring — not scenario-aware merge gates tied to your app's critical paths. Guard selects affected scenarios per PR and blocks merges via GitHub required checks."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../seo-pages.css" />
+  <link rel="stylesheet" href="../waitlist-modal.css" />
+</head>
+<body data-waitlist-surface="vs-checkly">
+  <div class="paper-grain"></div>
+  <div id="nav-root"></div>
+  <main class="doc-page">
+    <div class="frame">
+      <div class="doc-meta"><span class="num">Compare</span><span class="rule"></span><span>Guard vs Checkly</span></div>
+      <div class="doc-grid">
+        <aside class="doc-sidebar">
+          <div class="doc-side-block"><span class="doc-side-label">Topic</span><span class="doc-side-meta">Release guard vs synthetics SaaS</span></div>
+          <nav class="doc-toc" aria-label="Sections">
+            <a href="#summary"><span>01</span>Summary</a>
+            <a href="#compare"><span>02</span>Comparison table</a>
+            <a href="#when"><span>03</span>When to choose Guard</a>
+          </nav>
+        </aside>
+        <article class="doc-article">
+          <header>
+            <p class="doc-kicker"><a href="https://guard.molar.it" style="color:inherit">Molar Guard</a> — PR gating &amp; production synthetics</p>
+            <h1 class="doc-title">Molar Guard vs <em>Checkly</em></h1>
+            <p class="doc-lede">
+              <strong>Short answer:</strong> Checkly is a strong Playwright-native synthetic monitoring platform.
+              Molar Guard adds <strong>PR gating</strong> with affected-scenario selection, <strong>safe production synthetics</strong>
+              backed by Clones (no real charges or emails), and <strong>Mender</strong> fix PRs — monitoring plus merge gate in one surface.
+            </p>
+          </header>
+          <section class="doc-section" id="summary">
+            <h2><span class="doc-section-num">01 — Summary</span>Monitor vs <em>guard</em></h2>
+            <p>Checkly teams run browser checks on schedules, get alerts, and integrate with CI. That catches many production regressions — but it does not stop bad code from merging, and checkout/signup checks often skip real third-party behavior to avoid customer impact.</p>
+            <p>Guard spans three moments: <strong>before merge</strong> (affected E2E scenarios as a required GitHub check), <strong>after deploy</strong> (production synthetics against cloned Stripe/email), and <strong>on failure</strong> (forensic Trace + optional Mender fix PR). Same scenario graph as Cartographer and Clones — not a separate script library.</p>
+          </section>
+          <section class="doc-section" id="compare">
+            <h2><span class="doc-section-num">02 — Table</span>Side-by-side</h2>
+            <table class="compare-table">
+              <thead><tr><th></th><th>Molar Guard</th><th>Checkly</th></tr></thead>
+              <tbody>
+                <tr><th>Primary job</th><td>PR gate + prod monitor + auto-fix</td><td>Production synthetic monitoring</td></tr>
+                <tr><th>PR gating</th><td>Affected-scenario required check</td><td>CI integration, not core wedge</td></tr>
+                <tr><th>Test scripts</th><td>Agent-authored scenarios + Playwright export</td><td>Hand-written Playwright checks</td></tr>
+                <tr><th>Checkout / billing in prod</th><td>Clones — zero real customer impact</td><td>Often mocked or skipped</td></tr>
+                <tr><th>Failure response</th><td>Trace replay + Mender fix PR</td><td>Alert + dashboard</td></tr>
+                <tr><th>Scenario selection</th><td>Graph-aware (7 not 47 tests)</td><td>Run configured check suite</td></tr>
+                <tr><th>Suite integration</th><td>Cartographer, Clones, Trace</td><td>Standalone monitoring</td></tr>
+                <tr><th>Best for</th><td>AI-native teams shipping fast with guardrails</td><td>Dedicated synthetics + uptime</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="doc-section" id="when">
+            <h2><span class="doc-section-num">03 — Fit</span>When teams pick <em>Guard</em></h2>
+            <p>Choose Guard when merge queue goes green but production breaks, full E2E suites make CI too slow to gate, or you need billing flows exercised in production checks without touching real customers. Keep Checkly if you only need external uptime monitoring and already have separate PR quality gates.</p>
+            <p>Related: <a href="/integrations/github-actions" style="color:var(--signal)">GitHub Actions integration</a>, <a href="https://guard.molar.it" style="color:var(--signal)">Guard landing</a>, <a href="https://clones.molar.it" style="color:var(--signal)">Clones (safe synthetics)</a>.</p>
+            <div class="doc-cta">
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
+              <a href="/integrations/github-actions" class="btn btn-ghost">GitHub Actions guide</a>
+            </div>
+          </section>
+          <a class="doc-back" href="/"><span class="arrow">←</span> Back to landing</a>
+        </article>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="frame foot-inner">
+      <div>© 2026 Molar Labs</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="https://guard.molar.it" style="color:inherit;text-decoration:none;">Guard</a>
+        <a href="/vs/wiremock" style="color:inherit;text-decoration:none;">vs WireMock</a>
+        <a href="/integrations/github-actions" style="color:inherit;text-decoration:none;">GitHub Actions</a>
+        <a href="https://github.com/pratikranaa/molar-it" style="color:inherit;text-decoration:none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script src="../site-config.js"></script>
+  <script type="text/babel" src="../nav.jsx"></script>
+  <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script src="../waitlist-modal.js"></script>
+</body>
+</html>

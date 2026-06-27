@@ -44,6 +44,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="waitlist-modal.css" />
   <style>
     .doc-page {
       padding: 64px 0 96px;
@@ -200,7 +201,7 @@
     }
   </style>
 </head>
-<body>
+<body data-waitlist-surface="docs">
   <div class="paper-grain"></div>
   <div id="nav-root"></div>
 
@@ -283,6 +284,16 @@
             <p>Each third-party service has its own doc page — connect instructions, seeds, coverage, and available MCP tools. Start with <a href="/docs/clones/stripe" style="color:var(--signal)">Stripe</a> or <a href="/docs/clones/github" style="color:var(--signal)">GitHub</a>, or browse from the <a href="/#clones" style="color:var(--signal)">homepage catalog</a>.</p>
           </section>
 
+          <section class="doc-step">
+            <span class="doc-step-eyebrow">Early access</span>
+            <h2>Get started</h2>
+            <p>Docs are live — product access rolls out in waves. Join the waitlist and we will reach out when you can run scenarios against stateful clones in your repo.</p>
+            <div class="doc-cta" style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
+              <a href="/integrations/github-actions" class="btn btn-ghost">GitHub Actions</a>
+            </div>
+          </section>
+
           <section id="soon">
             <div class="doc-soon">
               <strong>Coming soon</strong>
@@ -315,5 +326,6 @@
   <script src="site-config.js"></script>
   <script type="text/babel" src="nav.jsx"></script>
   <script type="text/babel" src="nav-boot.jsx"></script>
+  <script src="waitlist-modal.js"></script>
 </body>
 </html>

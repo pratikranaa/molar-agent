@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molar Clones vs WireMock — Stateful API Mocking vs HTTP Stubs</title>
+  <meta name="description" content="Compare Molar Clones and WireMock. Clones are vendor-faithful, stateful simulations of Stripe, Twilio, and S3 with signed webhooks and no rate limits. WireMock uses hand-written HTTP stubs that drift." />
+  <meta property="og:title" content="Molar Clones vs WireMock — Stateful API Mocking vs HTTP Stubs" />
+  <meta property="og:description" content="WireMock stubs drift. Molar Clones model Stripe subscriptions, Twilio signatures, and cross-service state — zero production side effects, unlimited local runs." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://molar.it/vs/wiremock" />
+  <meta property="og:image" content="https://molar.it/og.png" />
+  <meta property="og:site_name" content="Molar" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Molar Clones vs WireMock" />
+  <meta name="twitter:image" content="https://molar.it/og.png" />
+  <link rel="canonical" href="https://molar.it/vs/wiremock" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Molar", "item": "https://molar.it/" },
+          { "@type": "ListItem", "position": 2, "name": "Clones vs WireMock", "item": "https://molar.it/vs/wiremock" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Molar Clones vs WireMock",
+        "url": "https://molar.it/vs/wiremock",
+        "description": "Comparison of Molar stateful API clones vs WireMock HTTP stubbing for integration testing."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Molar Clones a WireMock alternative?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, for teams testing third-party SaaS APIs. WireMock excels at generic HTTP stubs you author yourself. Molar Clones ship vendor-faithful, stateful simulations of Stripe, Twilio, Clerk, Resend, and S3 — with signed webhooks, subscription lifecycle, and shared state across services."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can WireMock replace Stripe test mode?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WireMock can stub Stripe endpoints, but stubs drift from real API semantics and do not model webhooks or cross-service state out of the box. Molar Clones maintain stateful Stripe behavior without test API keys or sandbox rate limits."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../seo-pages.css" />
+  <link rel="stylesheet" href="../waitlist-modal.css" />
+</head>
+<body data-waitlist-surface="vs-wiremock">
+  <div class="paper-grain"></div>
+  <div id="nav-root"></div>
+  <main class="doc-page">
+    <div class="frame">
+      <div class="doc-meta"><span class="num">Compare</span><span class="rule"></span><span>Clones vs WireMock</span></div>
+      <div class="doc-grid">
+        <aside class="doc-sidebar">
+          <div class="doc-side-block"><span class="doc-side-label">Topic</span><span class="doc-side-meta">Service virtualization vs HTTP stubs</span></div>
+          <nav class="doc-toc" aria-label="Sections">
+            <a href="#summary"><span>01</span>Summary</a>
+            <a href="#compare"><span>02</span>Comparison table</a>
+            <a href="#when"><span>03</span>When to choose Clones</a>
+          </nav>
+        </aside>
+        <article class="doc-article">
+          <header>
+            <p class="doc-kicker"><a href="https://clones.molar.it" style="color:inherit">Molar Clones</a> — stateful API mocking</p>
+            <h1 class="doc-title">Molar Clones vs <em>WireMock</em></h1>
+            <p class="doc-lede">
+              <strong>Short answer:</strong> WireMock is a mature HTTP stubbing engine — you write and maintain JSON responses.
+              Molar Clones are vendor-faithful, stateful simulations of Stripe, Twilio, Clerk, Resend, and S3 with signed webhooks,
+              subscription lifecycle, and no rate limits — better for integration QA than hand-rolled stubs.
+            </p>
+          </header>
+          <section class="doc-section" id="summary">
+            <h2><span class="doc-section-num">01 — Summary</span>Stubs vs <em>clones</em></h2>
+            <p>WireMock (OSS or Cloud) shines when you need programmable HTTP responses, fault injection, or record-replay for internal APIs. The cost is maintenance: every Stripe API change, webhook shape, or Twilio signature flow requires engineer time to update stubs. Those stubs also do not share state — a payment intent created in one stub does not flow into your email or auth stub.</p>
+            <p>Molar Clones target <strong>third-party SaaS fidelity</strong>. A Stripe clone maintains customers, payment intents, failures, and webhook delivery. Run checkout + Twilio SMS + Clerk auth in one deterministic room — offline in CI, with MCP tools for coding agents.</p>
+          </section>
+          <section class="doc-section" id="compare">
+            <h2><span class="doc-section-num">02 — Table</span>Side-by-side</h2>
+            <table class="compare-table">
+              <thead><tr><th></th><th>Molar Clones</th><th>WireMock</th></tr></thead>
+              <tbody>
+                <tr><th>Model</th><td>Vendor-faithful stateful clones</td><td>Hand-written HTTP stubs</td></tr>
+                <tr><th>Stripe / Twilio</th><td>Built-in lifecycle + webhooks</td><td>Custom JSON you maintain</td></tr>
+                <tr><th>State</th><td>Shared across clones in one run</td><td>Per-stub, manual wiring</td></tr>
+                <tr><th>Rate limits</th><td>None — runs locally/offline</td><td>N/A (local) / Cloud quotas</td></tr>
+                <tr><th>Webhooks</th><td>Signed delivery to localhost</td><td>Simulated via callbacks you configure</td></tr>
+                <tr><th>Time travel</th><td>Virtual clock for billing trials</td><td>Not built-in</td></tr>
+                <tr><th>AI agents</th><td>MCP-native tools</td><td>MockServer 7+ has MCP; WireMock varies</td></tr>
+                <tr><th>Best for</th><td>Stripe/Twilio/S3 integration E2E</td><td>Generic HTTP, internal APIs, fault tests</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="doc-section" id="when">
+            <h2><span class="doc-section-num">03 — Fit</span>When teams pick <em>Clones</em></h2>
+            <p>Choose Molar Clones when WireMock stubs drift, CI skips checkout because Stripe test mode gaps hurt confidence, or you need cross-vendor flows (pay → email → auth) without tunnels. Keep WireMock for narrow internal API fault injection if you want both.</p>
+            <p>Related: <a href="/blog/test-stripe-without-real-cards" style="color:var(--signal)">test Stripe without real cards</a>, <a href="/docs/clones/stripe" style="color:var(--signal)">Stripe clone docs</a>, <a href="https://clones.molar.it" style="color:var(--signal)">Clones landing</a>.</p>
+            <div class="doc-cta">
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
+              <a href="/docs/clones/stripe" class="btn btn-ghost">Stripe clone docs</a>
+            </div>
+          </section>
+          <a class="doc-back" href="/"><span class="arrow">←</span> Back to landing</a>
+        </article>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="frame foot-inner">
+      <div>© 2026 Molar Labs</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="https://clones.molar.it" style="color:inherit;text-decoration:none;">Clones</a>
+        <a href="/vs/checkly" style="color:inherit;text-decoration:none;">vs Checkly</a>
+        <a href="/docs" style="color:inherit;text-decoration:none;">Docs</a>
+        <a href="https://github.com/pratikranaa/molar-it" style="color:inherit;text-decoration:none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script src="../site-config.js"></script>
+  <script type="text/babel" src="../nav.jsx"></script>
+  <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script src="../waitlist-modal.js"></script>
+</body>
+</html>

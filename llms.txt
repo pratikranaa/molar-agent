@@ -26,6 +26,7 @@ fintech QA sandboxes, Twilio test mode alternative.
 - [Stripe clone docs](https://molar.it/docs/clones/stripe)
 - [Twilio clone docs](https://molar.it/docs/clones/twilio)
 - [Test Stripe without real cards](https://molar.it/blog/test-stripe-without-real-cards)
+- [Clones vs WireMock](https://molar.it/vs/wiremock)
 
 ### Cartographer (https://cartographer.molar.it)
 Autonomous QA, agentic crawl, app mapping, Playwright test generation. Alternative
@@ -40,12 +41,14 @@ Datadog Synthetics alternative with affected-scenario selection and cloned-vendo
 safe checks — zero real customers touched. GitHub required status checks.
 - [Guard landing](https://guard.molar.it)
 - [GitHub Actions integration](https://molar.it/integrations/github-actions)
+- [Guard vs Checkly](https://molar.it/vs/checkly)
 
 ### Trace (https://trace.molar.it)
 Playwright trace alternative, forensic test replay, flaky-test debugging. Five-ribbon
 timeline (video, DOM, network, console, agent), Layer 2 replay, Debugger AI, MCP.
 Replay.io / BrowserTrace alternative for the CI test loop (not production RUM).
 - [Trace landing](https://trace.molar.it)
+- [Trace vs Playwright Trace Viewer](https://molar.it/vs/playwright-trace)
 
 ## What Molar does (offered capabilities)
 
@@ -85,6 +88,9 @@ Replay.io / BrowserTrace alternative for the CI test loop (not production RUM).
 - [Molar QA Agent](https://molar.it/qa-agent)
 - [Molar vs Cypress](https://molar.it/vs/cypress)
 - [Molar vs Playwright](https://molar.it/vs/playwright)
+- [Clones vs WireMock](https://molar.it/vs/wiremock)
+- [Guard vs Checkly](https://molar.it/vs/checkly)
+- [Trace vs Playwright Trace Viewer](https://molar.it/vs/playwright-trace)
 - [GitHub Actions integration](https://molar.it/integrations/github-actions)
 - [Dashboard](https://app.molar.it)
 - [Full LLM overview](https://molar.it/llms-full.txt)

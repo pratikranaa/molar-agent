@@ -58,6 +58,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="waitlist-modal.css" />
   <style>
     .doc-page { padding: 64px 0 96px; border-bottom: 1px solid var(--rule); }
     .doc-meta {
@@ -135,7 +136,7 @@
     }
   </style>
 </head>
-<body>
+<body data-waitlist-surface="home">
   <div class="paper-grain"></div>
   <div id="nav-root"></div>
 
@@ -247,7 +248,7 @@
               for pricing and a live terminal demo.
             </p>
             <div class="doc-cta">
-              <a href="index.html#get-started" class="btn btn-primary">Start guarding →</a>
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
               <a href="docs.html" class="btn btn-ghost">Read the docs</a>
             </div>
           </section>
@@ -277,5 +278,6 @@
   <script src="site-config.js"></script>
   <script type="text/babel" src="nav.jsx"></script>
   <script type="text/babel" src="nav-boot.jsx"></script>
+  <script src="waitlist-modal.js"></script>
 </body>
 </html>

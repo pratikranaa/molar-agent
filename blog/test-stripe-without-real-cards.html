@@ -43,8 +43,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../seo-pages.css" />
+  <link rel="stylesheet" href="../waitlist-modal.css" />
 </head>
-<body>
+<body data-waitlist-surface="blog">
   <div class="paper-grain"></div>
   <div id="nav-root"></div>
   <main class="doc-page">
@@ -73,8 +74,16 @@
           <h2>How Molar runs checkout tests</h2>
           <p>Molar points an autonomous agent at your staging or production URL, authors a critical-path checkout scenario, and runs it against cloned Stripe plus email and auth dependencies. Failures produce a full trace; regressions can gate PRs via GitHub Actions.</p>
           <div class="doc-cta">
-            <a href="/integrations/github-actions" class="btn btn-primary">GitHub Actions guide →</a>
-            <a href="/" class="btn btn-ghost">Try Molar</a>
+            <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
+            <a href="/integrations/github-actions" class="btn btn-ghost">GitHub Actions guide</a>
+          </div>
+        </section>
+        <section class="doc-section">
+          <h2>Related</h2>
+          <p>Compare <a href="/vs/wiremock" style="color:var(--signal)">Molar Clones vs WireMock</a>, read the <a href="https://clones.molar.it" style="color:var(--signal)">Clones landing</a>, or browse <a href="/docs/clones/stripe" style="color:var(--signal)">Stripe clone docs</a>.</p>
+          <div class="doc-cta">
+            <a href="https://app.molar.it" class="btn btn-primary">Get early access →</a>
+            <a href="/docs/clones/stripe" class="btn btn-ghost">Stripe clone docs</a>
           </div>
         </section>
         <a class="doc-back" href="/blog"><span class="arrow">←</span> Back to blog</a>
@@ -84,7 +93,9 @@
   <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script src="../site-config.js"></script>
   <script type="text/babel" src="../nav.jsx"></script>
   <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script src="../waitlist-modal.js"></script>
 </body>
 </html>

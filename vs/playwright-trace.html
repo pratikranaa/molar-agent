@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molar Trace vs Playwright Trace Viewer — Forensic Test Replay</title>
+  <meta name="description" content="Compare Molar Trace and Playwright Trace Viewer. Trace adds five parallel ribbons, Layer 2 replay, agent thought traces, and MCP — beyond downloading trace zips from CI." />
+  <meta property="og:title" content="Molar Trace vs Playwright Trace Viewer — Forensic Test Replay" />
+  <meta property="og:description" content="Playwright Trace Viewer is free and local. Molar Trace is a forensic debugger for CI failures — video, DOM, network, console, planner ribbons plus share links and MCP." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://molar.it/vs/playwright-trace" />
+  <meta property="og:image" content="https://molar.it/og.png" />
+  <meta property="og:site_name" content="Molar" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Molar Trace vs Playwright Trace Viewer" />
+  <meta name="twitter:image" content="https://molar.it/og.png" />
+  <link rel="canonical" href="https://molar.it/vs/playwright-trace" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Molar", "item": "https://molar.it/" },
+          { "@type": "ListItem", "position": 2, "name": "Trace vs Playwright Trace Viewer", "item": "https://molar.it/vs/playwright-trace" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Molar Trace vs Playwright Trace Viewer",
+        "url": "https://molar.it/vs/playwright-trace",
+        "description": "Comparison of Molar forensic test traces vs the official Playwright Trace Viewer."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the best Playwright trace viewer alternative?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For CI failure loops beyond local zip files: Molar Trace. It adds five parallel forensic ribbons (video, DOM, network, console, agent planner), Layer 2 replay to validate fixes without re-running the full suite, share links for async QA handoff, and MCP tools for coding agents."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Playwright Trace Viewer work in CI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — engineers download trace.zip artifacts and open trace.playwright.dev locally. The friction is download, share, and snapshot gaps between steps. Trace auto-uploads on failure and keeps a navigable forensic record in the dashboard."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../seo-pages.css" />
+  <link rel="stylesheet" href="../waitlist-modal.css" />
+</head>
+<body data-waitlist-surface="vs-playwright-trace">
+  <div class="paper-grain"></div>
+  <div id="nav-root"></div>
+  <main class="doc-page">
+    <div class="frame">
+      <div class="doc-meta"><span class="num">Compare</span><span class="rule"></span><span>Trace vs Playwright</span></div>
+      <div class="doc-grid">
+        <aside class="doc-sidebar">
+          <div class="doc-side-block"><span class="doc-side-label">Topic</span><span class="doc-side-meta">Forensic replay vs local viewer</span></div>
+          <nav class="doc-toc" aria-label="Sections">
+            <a href="#summary"><span>01</span>Summary</a>
+            <a href="#compare"><span>02</span>Comparison table</a>
+            <a href="#when"><span>03</span>When to choose Trace</a>
+          </nav>
+        </aside>
+        <article class="doc-article">
+          <header>
+            <p class="doc-kicker"><a href="https://trace.molar.it" style="color:inherit">Molar Trace</a> — forensic test replay</p>
+            <h1 class="doc-title">Molar Trace vs <em>Playwright Trace Viewer</em></h1>
+            <p class="doc-lede">
+              <strong>Short answer:</strong> Playwright Trace Viewer is the official free tool for opening local trace.zip files.
+              Molar Trace is a CI-native forensic debugger — five parallel ribbons, Layer 2 replay, agent thought traces,
+              share links, and MCP — so teams stop downloading artifacts to debug red builds.
+            </p>
+          </header>
+          <section class="doc-section" id="summary">
+            <h2><span class="doc-section-num">01 — Summary</span>Viewer vs <em>forensic record</em></h2>
+            <p>Playwright's trace viewer (trace.playwright.dev) is excellent for single-developer debugging: snapshots, network, console, and video for one run. Gaps appear in team workflows — sharing traces, correlating clone activity, seeing agent planner reasoning, and re-running a fixed step without the full suite.</p>
+            <p>Trace treats every failure as a debugger session: video, DOM, network, console, and planner ribbons stay in sync. Layer 2 replay lets you patch a test step and validate the fix against the captured world state. Guard failures flow here automatically; Mender can draft fix PRs from the same record.</p>
+          </section>
+          <section class="doc-section" id="compare">
+            <h2><span class="doc-section-num">02 — Table</span>Side-by-side</h2>
+            <table class="compare-table">
+              <thead><tr><th></th><th>Molar Trace</th><th>Playwright Trace Viewer</th></tr></thead>
+              <tbody>
+                <tr><th>Deployment</th><td>CI auto-upload + dashboard</td><td>Local zip open in browser</td></tr>
+                <tr><th>Timeline model</th><td>Five parallel forensic ribbons</td><td>Step snapshots + attachments</td></tr>
+                <tr><th>Sharing</th><td>Share links for QA ↔ dev</td><td>Send zip files</td></tr>
+                <tr><th>Layer 2 replay</th><td>Re-run step with fix, same state</td><td>Re-run full test locally</td></tr>
+                <tr><th>Agent runs</th><td>Planner thought ribbon</td><td>Not applicable</td></tr>
+                <tr><th>Clone activity</th><td>Stripe/email/S3 in same trace</td><td>Not integrated</td></tr>
+                <tr><th>MCP</th><td>Agents query trace as tools</td><td>Official Playwright MCP separate</td></tr>
+                <tr><th>Frameworks</th><td>Playwright, Cypress, agent runs</td><td>Playwright (primary)</td></tr>
+                <tr><th>Price</th><td>Part of Molar suite</td><td>Free (OSS viewer)</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="doc-section" id="when">
+            <h2><span class="doc-section-num">03 — Fit</span>When teams pick <em>Trace</em></h2>
+            <p>Choose Trace when CI trace downloads slow triage, flakes eat eng hours, agentic test runs are opaque, or you want failures linked to Guard gates and Mender fix PRs. Keep Playwright Trace Viewer for quick local repro — many teams use both.</p>
+            <p>Related: <a href="https://trace.molar.it" style="color:var(--signal)">Trace landing</a>, <a href="https://guard.molar.it" style="color:var(--signal)">Guard (failure → trace)</a>, <a href="/vs/playwright" style="color:var(--signal)">Molar vs Playwright</a>.</p>
+            <div class="doc-cta">
+              <a href="https://app.molar.it" class="btn btn-primary">Join waitlist →</a>
+              <a href="https://trace.molar.it" class="btn btn-ghost">Trace landing</a>
+            </div>
+          </section>
+          <a class="doc-back" href="/"><span class="arrow">←</span> Back to landing</a>
+        </article>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="frame foot-inner">
+      <div>© 2026 Molar Labs</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="https://trace.molar.it" style="color:inherit;text-decoration:none;">Trace</a>
+        <a href="/vs/checkly" style="color:inherit;text-decoration:none;">vs Checkly</a>
+        <a href="/vs/playwright" style="color:inherit;text-decoration:none;">vs Playwright</a>
+        <a href="https://github.com/pratikranaa/molar-it" style="color:inherit;text-decoration:none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script src="../site-config.js"></script>
+  <script type="text/babel" src="../nav.jsx"></script>
+  <script type="text/babel" src="../nav-boot.jsx"></script>
+  <script src="../waitlist-modal.js"></script>
+</body>
+</html>

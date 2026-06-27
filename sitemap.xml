@@ -57,6 +57,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://molar.it/vs/wiremock</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://molar.it/vs/checkly</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://molar.it/vs/playwright-trace</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://molar.it/integrations/github-actions</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
