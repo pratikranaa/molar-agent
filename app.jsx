@@ -60,6 +60,26 @@ function App() {
   React.useEffect(() => {
     document.documentElement.classList.remove('no-js');
     document.documentElement.classList.add('js');
+
+    const scrollFromHash = () => {
+      const hash = window.location.hash;
+      if (!hash || hash.length < 2) return;
+      const id = hash.slice(1);
+      let tries = 0;
+      const attempt = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: tries === 0 ? 'auto' : 'smooth', block: 'start' });
+          return;
+        }
+        if (tries++ < 24) requestAnimationFrame(attempt);
+      };
+      requestAnimationFrame(attempt);
+    };
+
+    scrollFromHash();
+    window.addEventListener('hashchange', scrollFromHash);
+    return () => window.removeEventListener('hashchange', scrollFromHash);
   }, []);
 
   const headline = HEADLINES[tweaks.headline] || HEADLINES['users-qa'];
