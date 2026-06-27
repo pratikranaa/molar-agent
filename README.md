@@ -33,6 +33,12 @@ python3 -m http.server 8080
 
 Deploy: `vercel --prod` (Vercel project `molar` → molar.it).
 
+**Clone docs:** per-clone tool tables are generated from `molar-clones` fixtures. After changing fixtures, run:
+
+```bash
+node scripts/gen-clone-routes.mjs
+```
+
 Surface landings use subdomains (`cartographer.molar.it`, etc.). Add each as a domain on the Vercel project and point DNS (CNAME to `cname.vercel-dns.com`). Old paths (`/cartographer`, …) 301 to the subdomain.
 
 ## SEO / launch

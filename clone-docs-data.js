@@ -93,10 +93,6 @@ function formatSeedsLine(id, tier) {
   return `Common seeds: ${shown.map((s) => `\`${s}\``).join(', ')}, and ${seeds.length - 6} more. Pass \`--seed\` to \`molar clones spawn ${id}\`.`;
 }
 
-function restRouteTools(routes, desc) {
-  return routes.map(([method, path]) => [`${method} ${path}`, desc || 'Recorded fixture response with vendor-shaped errors.']);
-}
-
 const CLONE_PREVIEW_STATUS = {
   apify: 'launch preview',
   calcom: 'launch preview',
@@ -184,98 +180,14 @@ const CLONE_DOC_OVERRIDES = {
       'Key-value store records',
       'Service-shaped REST errors and auth handling',
     ],
-    toolGroups: [
-      {
-        title: 'Actors & runs',
-        tools: restRouteTools([
-          ['GET', '/v2/acts'],
-          ['POST', '/v2/acts/act_8a7b6c5d/runs'],
-          ['GET', '/v2/acts/act_8a7b6c5d/runs/run_i9j8k7l6'],
-        ]),
-      },
-      {
-        title: 'Storage',
-        tools: restRouteTools([
-          ['GET', '/v2/datasets'],
-          ['GET', '/v2/key-value-stores'],
-        ]),
-      },
-    ],
   },
   github: {
     tagline: 'Test GitHub agents against a stateful clone of repos, files, branches, issues, PRs, commits, and workflow runs with real GitHub API error shapes.',
-    summary: 'Covers repos, files, branches, issues, PRs, commits, and workflow runs. Error responses match real GitHub API format (status codes, error messages, validation errors).',
     startHere: {
       bestFor: 'Agents that triage issues, update files, open PRs, review diffs, merge changes, or inspect CI state.',
       connectWith: 'Route mode for `api.github.com`, direct REST base URLs from `molar clones spawn github`, or the global Molar clones MCP (`molar_clone_spawn`, `molar_clone_seed`, `molar_clone_route`).',
-      knownLimits: 'Fixture-replay with 34 recorded operations. Git transport and every GitHub product surface are not simulated. Tool names below map to fixture ops — not a separate GitHub MCP server.',
+      knownLimits: 'Fixture-replay clone. Git transport and every GitHub product surface are not simulated. Tool names map to fixture ops — not a separate GitHub MCP server.',
     },
-    toolGroups: [
-      {
-        title: 'Repositories',
-        tools: [
-          ['create_repository', 'Create a new GitHub repository in your account'],
-          ['get_repository', 'Get details of a GitHub repository'],
-          ['search_repositories', 'Search for GitHub repositories'],
-          ['fork_repository', 'Fork a repository to your account or specified organization'],
-          ['search_code', 'Search for code across repositories'],
-          ['search_users', 'Search for users on GitHub'],
-        ],
-      },
-      {
-        title: 'Files',
-        tools: [
-          ['get_file_contents', 'Get the contents of a file or directory from a repository'],
-          ['create_or_update_file', 'Create or update a single file in a repository'],
-          ['push_files', 'Push multiple files in a single commit'],
-        ],
-      },
-      {
-        title: 'Branches',
-        tools: [
-          ['create_branch', 'Create a new branch in a repository'],
-          ['list_branches', 'List branches in a repository'],
-          ['delete_branch', 'Delete a branch from a repository'],
-        ],
-      },
-      {
-        title: 'Issues',
-        tools: [
-          ['create_issue', 'Create a new issue in a repository'],
-          ['get_issue', 'Get details of a specific issue'],
-          ['list_issues', 'List issues with filtering options'],
-          ['update_issue', 'Update an existing issue'],
-          ['search_issues', 'Search for issues and pull requests across repositories'],
-          ['add_issue_comment', 'Add a comment to an existing issue'],
-        ],
-      },
-      {
-        title: 'Pull Requests',
-        tools: [
-          ['create_pull_request', 'Create a new pull request'],
-          ['get_pull_request', 'Get details of a specific pull request'],
-          ['list_pull_requests', 'List and filter repository pull requests'],
-          ['update_pull_request', 'Update an existing pull request'],
-          ['merge_pull_request', 'Merge a pull request'],
-          ['get_pull_request_diff', 'Get the diff of a pull request'],
-          ['get_pull_request_commits', 'Get commits on a pull request'],
-          ['get_pull_request_reviews', 'Get reviews on a pull request'],
-          ['create_pull_request_review', 'Create a review on a pull request'],
-          ['get_pull_request_files', 'Get the list of files changed in a pull request'],
-          ['get_pull_request_status', 'Get the combined status of all status checks'],
-          ['update_pull_request_branch', 'Update a PR branch with latest changes from base'],
-          ['get_pull_request_comments', 'Get the review comments on a pull request'],
-        ],
-      },
-      {
-        title: 'Commits & Workflows',
-        tools: [
-          ['list_commits', 'Get list of commits of a branch'],
-          ['list_workflow_runs', 'List workflow runs for a repository'],
-          ['get_workflow_run', 'Get a specific workflow run'],
-        ],
-      },
-    ],
     notes: [
       'Configurable rate limiting via the `rate-limited` seed.',
       'The `permissions-denied` seed returns 403 on write operations.',
@@ -384,47 +296,10 @@ const CLONE_DOC_OVERRIDES = {
   slack: {
     tagline: 'Test Slack bots and workflow automations against a stateful Slack API clone — channels, messages, and reactions without posting to real workspaces.',
     covers: ['chat.postMessage and channel reads', 'Thread replies and reactions', 'Workspace auth and rate-limit shapes', 'Webhook event delivery inside the clone'],
-    toolGroups: [
-      {
-        title: 'Messaging',
-        tools: restRouteTools([
-          ['POST', '/chat.postMessage'],
-          ['GET', '/conversations.history'],
-          ['GET', '/conversations.list'],
-          ['GET', '/conversations.replies'],
-          ['POST', '/reactions.add'],
-        ]),
-      },
-      {
-        title: 'Users',
-        tools: restRouteTools([
-          ['GET', '/users.list'],
-          ['GET', '/users.profile.get'],
-        ]),
-      },
-    ],
   },
   linear: {
     tagline: 'Test issue-tracking agents against a stateful Linear clone — issues, cycles, labels, and team workflows with REST-shaped errors.',
     covers: ['Issue create and update', 'Team and project scoping', 'Label and state transitions', 'Linear-shaped validation errors'],
-    toolGroups: [
-      {
-        title: 'Issues & comments',
-        tools: restRouteTools([
-          ['GET', '/v1/comments'],
-          ['POST', '/v1/comments'],
-        ]),
-      },
-      {
-        title: 'Cycles & initiatives',
-        tools: restRouteTools([
-          ['GET', '/v1/cycles'],
-          ['GET', '/v1/cycles/active'],
-          ['GET', '/v1/initiatives'],
-          ['POST', '/v1/initiatives'],
-        ]),
-      },
-    ],
   },
   discord: {
     tagline: 'Test Discord bot flows against a stateful Discord API clone — guilds, channels, and messages without touching production servers.',
@@ -437,64 +312,19 @@ const CLONE_DOC_OVERRIDES = {
       knownLimits: 'Launch preview — Supabase Management API fixtures. Not a full Postgres runtime, Auth service, or Storage backend.',
     },
     covers: ['Project and branch reads', 'Secrets and config metadata', 'Migration and RLS scenario seeds', 'Supabase-shaped 4xx errors'],
-    toolGroups: [
-      {
-        title: 'Organizations & projects',
-        tools: restRouteTools([
-          ['GET', '/v1/organizations'],
-          ['GET', '/v1/projects'],
-          ['POST', '/v1/projects'],
-          ['GET', '/v1/projects/{ref}'],
-        ]),
-      },
-      {
-        title: 'Branches & keys',
-        tools: restRouteTools([
-          ['GET', '/v1/projects/{ref}/api-keys'],
-          ['GET', '/v1/projects/{ref}/branches'],
-          ['POST', '/v1/projects/{ref}/branches'],
-          ['POST', '/v1/projects/{ref}/branches/{branch}/merge'],
-        ]),
-      },
-    ],
   },
   sentry: {
     tagline: 'Test Sentry triage agents against a stateful clone of organizations, projects, issues, latest events, stack traces, and releases with real REST errors.',
-    summary: 'Covers Sentry issue triage workflows: organizations, projects, issues, latest events, stack traces, and releases.',
     startHere: {
       bestFor: 'Agents that inspect production errors, read stack traces, triage issues, and connect releases to failures.',
       connectWith: 'Direct REST base URLs from `molar clones spawn sentry`.',
-      knownLimits: 'Launch preview — read-focused `/api/0/...` fixtures. Event ingest, issue mutations, and the Sentry web UI are not simulated.',
+      knownLimits: 'Launch preview — read-focused fixtures. Event ingest, issue mutations, and the Sentry web UI are not simulated.',
     },
     covers: [
       'Organizations and projects',
       'Issue list and detail reads',
       'Latest event with stack traces',
       'Release history',
-    ],
-    toolGroups: [
-      {
-        title: 'Organizations',
-        tools: [['GET /api/0/organizations/', 'List organizations the token can access.']],
-      },
-      {
-        title: 'Projects',
-        tools: [
-          ['GET /api/0/projects/', 'List projects.'],
-          ['GET /api/0/projects/{org}/{project}/', 'Get one project by slug.'],
-        ],
-      },
-      {
-        title: 'Issues',
-        tools: [
-          ['GET /api/0/projects/{org}/{project}/issues/', 'List project issues.'],
-          ['GET /api/0/projects/{org}/{project}/issues/{id}/events/latest/', 'Latest event for an issue, including stack trace.'],
-        ],
-      },
-      {
-        title: 'Releases',
-        tools: [['GET /api/0/organizations/{org}/releases/', 'List releases, newest first.']],
-      },
     ],
     notes: [
       'REST routes use Sentry `/api/0/...` path shapes.',
@@ -541,24 +371,6 @@ const CLONE_DOC_OVERRIDES = {
       knownLimits: 'Architecture Preview: recording-replay backed with focused CMS overlays. Full publish lifecycle semantics are not modeled yet.',
     },
     covers: ['Sites and pages', 'CMS collections and items', 'Assets', 'Forms', 'Webhooks'],
-    toolGroups: [
-      {
-        title: 'Sites & pages',
-        tools: restRouteTools([
-          ['GET', '/v2/sites'],
-          ['GET', '/v2/sites/{site_id}'],
-          ['GET', '/v2/sites/{site_id}/pages'],
-        ]),
-      },
-      {
-        title: 'CMS',
-        tools: restRouteTools([
-          ['GET', '/v2/sites/{site_id}/collections'],
-          ['GET', '/v2/collections/{collection_id}/items'],
-          ['POST', '/v2/collections/{collection_id}/items'],
-        ]),
-      },
-    ],
     notes: [
       'Use Webflow when your agent manages CMS content state across collections and items.',
     ],
@@ -624,6 +436,33 @@ const CLONE_REGISTRY = /*CLONES-REGISTRY-BEGIN*/[
   ['woocommerce', 'fixtured'],
 ]/*CLONES-REGISTRY-END*/;
 
+function generatedToolGroups(slug) {
+  return window.CLONE_ROUTE_GROUPS?.[slug] || [];
+}
+
+function generatedOpCount(slug) {
+  const groups = generatedToolGroups(slug);
+  return groups.reduce((n, g) => n + g.tools.length, 0);
+}
+
+function resolveToolGroups(slug, override, base) {
+  const generated = generatedToolGroups(slug);
+  const manual = override.toolGroups || [];
+  if (generated.length && manual.length) return [...generated, ...manual];
+  if (generated.length) return generated;
+  return manual.length ? manual : base.toolGroups;
+}
+
+function resolveSummary(slug, override) {
+  if (override.summary) return override.summary;
+  const n = generatedOpCount(slug);
+  if (n > 0) {
+    const name = cloneDisplayName(slug);
+    return `${n} recorded fixture operations. Error responses match real ${name} API shapes (status codes, validation errors, rate limits).`;
+  }
+  return null;
+}
+
 function getCloneDoc(id) {
   const entry = CLONE_REGISTRY.find(([k]) => k === id);
   if (!entry) return null;
@@ -641,12 +480,13 @@ function getCloneDoc(id) {
   return {
     ...base,
     ...override,
+    summary: resolveSummary(slug, override) || override.summary,
     previewStatus: override.previewStatus || base.previewStatus,
     startHere: mergedStartHere,
     covers: override.covers || base.covers,
     toolsSubtitle: override.toolsSubtitle || base.toolsSubtitle,
     notes: mergedNotes,
-    toolGroups: override.toolGroups || base.toolGroups,
+    toolGroups: resolveToolGroups(slug, override, base),
   };
 }
 
