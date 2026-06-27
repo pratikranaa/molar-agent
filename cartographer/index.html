@@ -3,32 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cartographer — Autonomous App Mapping &amp; Playwright Tests · by Molar</title>
-<meta name="description" content="Cartographer crawls your app, maps every route, and writes Playwright tests you own — in a real browser, with a budget you set. Autonomous QA surface by Molar." />
+<title>Cartographer — Autonomous QA, Agentic Crawl &amp; Playwright Test Generation | Molar</title>
+<meta name="description" content="Cartographer maps your web app with an agentic crawl, builds a queryable site graph, and exports owned Playwright tests. Autonomous QA alternative to Playwright codegen and manual E2E authoring." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://cartographer.molar.it/" />
-<meta property="og:title" content="Cartographer — Autonomous App Mapping · by Molar" />
-<meta property="og:description" content="Point Cartographer at any URL. It maps your app, traces every flow, and exports owned Playwright tests — MCP, CLI, and web dashboard." />
+<link rel="alternate" type="text/plain" title="llms.txt" href="https://molar.it/llms.txt" />
+<meta property="og:title" content="Cartographer — Autonomous App Mapping &amp; Playwright Export" />
+<meta property="og:description" content="Agentic crawl from any URL. Cartographer discovers routes, traces flows, and writes Playwright tests you own — MCP, CLI, and web dashboard." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cartographer.molar.it/" />
-<meta property="og:image" content="https://molar.it/og.png" />
+<meta property="og:image" content="https://molar.it/og-cartographer.png" />
+<meta property="og:image:alt" content="Molar Cartographer — autonomous QA and Playwright test generation." />
 <meta property="og:site_name" content="Molar" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Cartographer — Autonomous App Mapping" />
-<meta name="twitter:description" content="Agentic crawl, site graph, and Playwright export. The QA agent that knows your app better than you do." />
-<meta name="twitter:image" content="https://molar.it/og.png" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Molar Cartographer","url":"https://cartographer.molar.it/","description":"Autonomous app mapping and Playwright test authoring for QA teams.","isPartOf":{"@type":"WebSite","name":"Molar","url":"https://molar.it"},"about":{"@type":"SoftwareApplication","name":"Molar Cartographer","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://cartographer.molar.it/","provider":{"@type":"Organization","name":"Molar","url":"https://molar.it"}}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="/site-config.js"></script>
-<link rel="stylesheet" href="/waitlist-modal.css">
-<style>
-  html.pricing-off #pricing,html.pricing-off a[href="#pricing"]{display:none!important}
-  :root{
-    --bg:#f4f1ea;
-    --bg-2:#ece7dc;
-    --ink:#15120c;
+<meta name="twitter:title" content="Cartographer — Agentic Crawl &amp; Playwright Tests" />
+<meta name="twitter:description" content="Autonomous app mapping, site graph, and Playwright export. The QA agent that crawls your app and writes tests you keep." />
+<meta name="twitter:image" content="https://molar.it/og-cartographer.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://cartographer.molar.it/#webpage",
+      "name": "Molar Cartographer — Autonomous QA & Playwright Test Generation",
+      "url": "https://cartographer.molar.it/",
+      "description": "Autonomous QA agent that agentic-crawls your app, maps every route into a site graph, and exports owned Playwright tests.",
+      "isPartOf": { "@id": "https://molar.it/#website" },
+      "about": { "@id": "https://cartographer.molar.it/#app" },
+      "breadcrumb": { "@id": "https://cartographer.molar.it/#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cartographer.molar.it/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Molar", "item": "https://molar.it" },
+        { "@type": "ListItem", "position": 2, "name": "Cartographer", "item": "https://cartographer.molar.it/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cartographer.molar.it/#app",
+      "name": "Molar Cartographer",
+      "alternateName": ["Molar autonomous QA", "URL to Playwright tests", "Playwright test generator"],
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Autonomous QA / E2E test generation / app mapping",
+      "operatingSystem": "Web",
+      "url": "https://cartographer.molar.it/",
+      "description": "Agentic crawl and autonomous QA: maps web apps into a queryable site graph, runs goal-driven browser flows, and exports owned Playwright test specs via MCP, CLI, or dashboard.",
+      "provider": { "@type": "Organization", "name": "Molar", "url": "https://molar.it" },
+      "featureList": [
+        "Agentic BFS crawl and app mapping",
+        "Queryable site graph with screenshots and DOM hashes",
+        "Playwright test generation and export",
+        "Goal-driven autonomous browser runs",
+        "MCP server for AI coding agents",
+        "Safe production crawl with rate budgets",
+        "Integration with Molar Clones for third-party sandboxes"
+      ],
+      "isPartOf": { "@type": "SoftwareApplication", "name": "Molar", "url": "https://molar.it" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://cartographer.molar.it/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is Cartographer different from Playwright codegen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Playwright codegen records one manual session at a time. Cartographer autonomously crawls your app, builds a site graph, and exports a full Playwright suite you own in git."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Cartographer generate tests from a URL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Point Cartographer at any URL. It agentic-crawls your app with a budget you set, maps routes and flows, and exports owned Playwright TypeScript specs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Cartographer a QA Wolf alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cartographer generates Playwright tests in minutes that your team owns. QA Wolf is a managed human service with weeks-long onboarding — Cartographer is autonomous software with MCP and CLI integration."
+          }
+        }
+      ]
+    }
     --ink-2:#3a3528;
     --muted:#6b6253;
     --line:#d9d2c2;
@@ -203,7 +267,19 @@
   .price.feat-card ul li::before{color:#86c374}
   .price .btn{width:100%;justify-content:center}
 
-  /* faq / footer */
+  /* faq */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+  .faq details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+  .faq details[open]{background:var(--bg-2)}
+  .faq summary{font-family:'Instrument Serif',serif;font-size:21px;letter-spacing:-0.01em;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;line-height:1.2}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:'Geist Mono',monospace;font-size:18px;color:var(--terra);transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq p{margin:14px 0 0;font-size:14px;color:var(--ink-2);line-height:1.6}
+  .aliases{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .aliases span{font-family:'Geist Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2)}
+
+  /* footer */
   footer{background:var(--ink);color:#bdb39e;padding:60px 0 32px;font-size:13px}
   footer .grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
   footer h5{font-family:'Geist Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:#9a8e76;margin:0 0 16px}
@@ -676,6 +752,24 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-eyebrow">Also known as</div>
+    <h2 class="sec-title" style="max-width:22ch">Autonomous QA &amp; Playwright codegen — without the brittleness.</h2>
+    <p class="sec-lede">Cartographer answers searches for agentic crawl, app mapping, Playwright test generation, and autonomous E2E authoring — with a site graph you can query and tests you actually own.</p>
+    <div class="aliases" aria-label="Related search terms">
+      <span>agentic crawl</span><span>app mapping</span><span>Playwright test generation</span><span>autonomous QA</span><span>Playwright codegen alternative</span><span>E2E test AI</span><span>site graph</span><span>MCP browser tools</span>
+    </div>
+    <div class="faq" style="margin-top:56px">
+      <details open><summary>How is Cartographer different from Playwright codegen?</summary><p>Playwright codegen records one session. Cartographer <em>crawls</em> your app (BFS from a seed URL), builds a route graph, then runs goal-driven flows and exports owned <code>.spec.ts</code> files through a 7-stage pipeline. Compare <a href="https://molar.it/vs/playwright">Molar vs Playwright</a>.</p></details>
+      <details><summary>Can it crawl authenticated apps?</summary><p>Yes — Cartographer resolves auth gates, stores session state, and maps routes behind login. Safe production crawl with configurable rate budgets.</p></details>
+      <details><summary>Does it replace my existing Playwright suite?</summary><p>No — it augments it. Export new specs into your repo, or feed existing flows to <a href="https://guard.molar.it">Guard</a> for PR gating and production monitoring.</p></details>
+      <details><summary>How does Cartographer use Clones?</summary><p>Flows that hit Stripe, email, or SMS run against <a href="https://clones.molar.it">Molar Clones</a> so the agent can test checkout and webhooks with zero production side effects.</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="container">
@@ -772,8 +866,8 @@
       <div>
         <h5>Developers</h5>
         <a href="https://molar.it/docs">Docs</a>
-        <a href="#">CLI</a>
-        <a href="#">MCP</a>
+        <a href="https://molar.it/vs/playwright">Molar vs Playwright</a>
+        <a href="https://molar.it/integrations/github-actions">GitHub Actions</a>
         <a href="https://github.com/pratikranaa/molar-it">GitHub</a>
         <a href="#">Status</a>
       </div>
@@ -789,6 +883,18 @@
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How is Cartographer different from Playwright codegen?","acceptedAnswer":{"@type":"Answer","text":"Playwright codegen records one session. Cartographer crawls your app with BFS, builds a route graph, runs goal-driven flows, and exports owned Playwright spec files."}},
+    {"@type":"Question","name":"Can it crawl authenticated apps?","acceptedAnswer":{"@type":"Answer","text":"Yes. Cartographer resolves auth gates, stores session state, and maps routes behind login with configurable rate budgets."}},
+    {"@type":"Question","name":"Does it replace my existing Playwright suite?","acceptedAnswer":{"@type":"Answer","text":"No. It augments your suite by exporting new specs or feeding flows to Guard for PR gating and production monitoring."}},
+    {"@type":"Question","name":"How does Cartographer use Clones?","acceptedAnswer":{"@type":"Answer","text":"Flows hitting Stripe, email, or SMS run against Molar Clones so the agent tests checkout and webhooks with zero production side effects."}}
+  ]
+}
+</script>
 <script src="/waitlist-modal.js"></script>
 </body>
 </html>

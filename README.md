@@ -37,6 +37,7 @@ Deploy: `vercel --prod` (Vercel project `molar` → molar.it).
 
 ```bash
 node scripts/gen-clone-routes.mjs
+node scripts/gen-sitemap.mjs
 ```
 
 Surface landings use subdomains (`cartographer.molar.it`, etc.). Add each as a domain on the Vercel project and point DNS (CNAME to `cname.vercel-dns.com`). Old paths (`/cartographer`, …) 301 to the subdomain.
@@ -69,6 +70,19 @@ Until `WAITLIST_WEBHOOK_URL` (or Loops) is set, the API returns `503` and the fo
 ## SEO / launch
 
 See [`seo-launch-kit/00-START-HERE.txt`](seo-launch-kit/00-START-HERE.txt) for Search Console, directory listings, and launch post templates.
+
+**Keyword map:** [`seo-launch-kit/keyword-map.txt`](seo-launch-kit/keyword-map.txt) — competitors, target queries, and GSC checklist per surface (Clones, Cartographer, Guard, Trace).
+
+**Sitemap:** regenerate after clone catalog changes:
+
+```bash
+node scripts/gen-sitemap.mjs   # 48 URLs: main site + surfaces + 28 clone docs
+node scripts/gen-clone-routes.mjs
+```
+
+**OG images (TODO):** surface pages reference per-product social images at `/og-clones.png`, `/og-cartographer.png`, `/og-guard.png`, `/og-trace.png` (1200×630). Create and deploy to `molar.it/` root for rich social previews.
+
+**Note:** `docs.molar.it` is not live — docs live at `https://molar.it/docs`. Do not add `docs.molar.it` to sitemap or schema `sameAs`.
 
 ## Contact
 

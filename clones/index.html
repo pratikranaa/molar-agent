@@ -3,32 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clones — Stateful API Clones for QA · by Molar</title>
-<meta name="description" content="Stateful, vendor-faithful clones of Stripe, Twilio, email, auth, and S3 for QA. Charge a card, fire webhooks, expire tokens — none of it leaves the room. Early access by Molar." />
+<title>Molar Clones — Stateful API Mocking &amp; Service Virtualization | Stripe, Twilio, S3</title>
+<meta name="description" content="Stateful service virtualization for QA: WireMock-grade API mocking with Stripe, Twilio, Clerk, and S3 clones. No rate limits, signed webhooks, MCP for AI agents — offline in CI." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://clones.molar.it/" />
-<meta property="og:title" content="Clones — Stateful API Clones for QA · by Molar" />
-<meta property="og:description" content="Real APIs, no real side effects. Stateful clones for Stripe, Twilio, Resend, Clerk, S3 — time-travellable, MCP-native, built for the AI-coding era." />
+<link rel="alternate" type="text/plain" title="llms.txt" href="https://molar.it/llms.txt" />
+<meta property="og:title" content="Molar Clones — Stateful API Mocking &amp; Service Virtualization" />
+<meta property="og:description" content="Vendor-faithful API clones for Stripe, Twilio, email, auth, and S3. Charge cards, fire webhooks, expire tokens — zero production side effects. MCP-native for the AI-coding era." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://clones.molar.it/" />
-<meta property="og:image" content="https://molar.it/og.png" />
+<meta property="og:image" content="https://molar.it/og-clones.png" />
+<meta property="og:image:alt" content="Molar Clones — stateful API mocking and service virtualization for QA." />
 <meta property="og:site_name" content="Molar" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Clones — Stateful API Clones for QA" />
-<meta name="twitter:description" content="Stateful clones of Stripe, Twilio, email, auth, S3. Test checkout and webhooks with zero production side effects." />
-<meta name="twitter:image" content="https://molar.it/og.png" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Molar Clones","url":"https://clones.molar.it/","description":"Stateful API clones for QA — Stripe, Twilio, email, auth, S3 with no production side effects.","isPartOf":{"@type":"WebSite","name":"Molar","url":"https://molar.it"},"about":{"@type":"SoftwareApplication","name":"Molar Clones","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://clones.molar.it/","provider":{"@type":"Organization","name":"Molar","url":"https://molar.it"}}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="/site-config.js"></script>
-<link rel="stylesheet" href="/waitlist-modal.css">
-<style>
-  html.pricing-off #pricing,html.pricing-off a[href="#pricing"]{display:none!important}
-  :root{
-    --bg:#f4f1ea;
-    --bg-2:#ece7dc;
-    --ink:#15120c;
+<meta name="twitter:title" content="Molar Clones — API Mocking Without Rate Limits" />
+<meta name="twitter:description" content="Stateful Stripe/Twilio/S3 clones for CI. Service virtualization with signed webhooks, time travel, and MCP for coding agents." />
+<meta name="twitter:image" content="https://molar.it/og-clones.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://clones.molar.it/#webpage",
+      "name": "Molar Clones — Stateful API Mocking & Service Virtualization",
+      "url": "https://clones.molar.it/",
+      "description": "Stateful, vendor-faithful API clones for Stripe, Twilio, email, auth, and S3 — service virtualization with no rate limits, signed webhooks, and MCP for AI coding agents.",
+      "isPartOf": { "@id": "https://molar.it/#website" },
+      "about": { "@id": "https://clones.molar.it/#app" },
+      "breadcrumb": { "@id": "https://clones.molar.it/#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://clones.molar.it/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Molar", "item": "https://molar.it" },
+        { "@type": "ListItem", "position": 2, "name": "Clones", "item": "https://clones.molar.it/" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://clones.molar.it/#app",
+      "name": "Molar Clones",
+      "alternateName": ["Molar API clones", "WireMock alternative", "Stripe test sandbox alternative"],
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "API mocking / service virtualization / test sandboxes",
+      "operatingSystem": "Web",
+      "url": "https://clones.molar.it/",
+      "description": "Stateful API mocking and service virtualization: vendor-faithful clones of Stripe, Twilio, SendGrid, Clerk, S3, and 28+ integrations. No rate limits, signed webhooks, world snapshots, MCP-native for AI agents.",
+      "provider": { "@type": "Organization", "name": "Molar", "url": "https://molar.it" },
+      "featureList": [
+        "Stateful API mocking and service virtualization",
+        "Stripe, Twilio, SendGrid, Clerk, S3 vendor clones",
+        "No API rate limits — offline CI and local dev",
+        "Signed webhook delivery to localhost",
+        "Virtual clock and time-travel for billing trials",
+        "World snapshots across multiple vendor clones",
+        "MCP server for AI coding agents",
+        "28+ integration clone docs"
+      ],
+      "isPartOf": { "@type": "SoftwareApplication", "name": "Molar", "url": "https://molar.it" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://clones.molar.it/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is Molar Clones different from WireMock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WireMock uses hand-written HTTP stubs that drift from real vendor APIs. Molar Clones are stateful, vendor-faithful simulations of Stripe, Twilio, Clerk, Resend, and S3 — with signed webhooks, subscription lifecycle, and shared state across services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I test Stripe checkout without Stripe test mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Molar Clones provide deterministic Stripe clones with stateful charges, webhooks, and billing flows — no test API keys, no rate limits, and no gaps between sandbox behavior and production semantics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Molar Clones work with AI coding agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clones are MCP-native. Coding agents can charge cards, fire webhooks, and advance virtual time via tools — without touching production APIs or hitting vendor rate limits."
+          }
+        }
+      ]
+    }
     --ink-2:#3a3528;
     --muted:#6b6253;
     --line:#d9d2c2;
@@ -254,6 +319,8 @@
   .faq summary::after{content:"+";font-family:'Geist Mono',monospace;font-size:18px;color:var(--cobalt);transition:transform .2s}
   .faq details[open] summary::after{transform:rotate(45deg)}
   .faq p{margin:14px 0 0;font-size:14px;color:var(--ink-2);line-height:1.6}
+  .aliases{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .aliases span{font-family:'Geist Mono',monospace;font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2)}
 
   /* footer */
   footer{background:var(--ink);color:#bdb39e;padding:60px 0 32px;font-size:13px}
@@ -744,6 +811,24 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-eyebrow">Also known as</div>
+    <h2 class="sec-title" style="max-width:20ch">Service virtualization for the AI-coding era.</h2>
+    <p class="sec-lede">Teams search for WireMock alternatives, Stripe test sandboxes without rate limits, and MCP-native API mocking. Clones is all three — stateful, vendor-faithful, and built for agents.</p>
+    <div class="aliases" aria-label="Related search terms">
+      <span>API mocking</span><span>service virtualization</span><span>Stripe test sandbox</span><span>Twilio test mode alternative</span><span>WireMock alternative</span><span>MSW for backends</span><span>MCP API tools</span><span>offline CI sandboxes</span>
+    </div>
+    <div class="faq" style="margin-top:56px">
+      <details open><summary>How is Clones different from WireMock or MSW?</summary><p>WireMock and MSW are great for hand-written HTTP stubs. Clones are <em>vendor-faithful</em>: they implement Stripe, Twilio, Clerk, and S3 object graphs with signed webhooks, virtual clocks, and world snapshots — so checkout and auth flows behave like production without hitting real APIs. See <a href="https://molar.it/docs/clones/stripe">Stripe clone docs</a>.</p></details>
+      <details><summary>Can I test Stripe without Stripe test-mode keys?</summary><p>Yes. Point your SDK at a clone tenant — no Stripe account, no <code>sk_test_</code> keys, no network calls, no rate limits. Read <a href="https://molar.it/blog/test-stripe-without-real-cards">how to test Stripe without real cards</a>.</p></details>
+      <details><summary>Do clones work offline in CI?</summary><p>Clones run locally, in CI, or air-gapped on-prem. Parallel workers each get an isolated tenant with deterministic IDs — no shared sandbox state, no vendor rate limits.</p></details>
+      <details><summary>What does MCP-native mean?</summary><p>Clones expose spawn, snapshot, clock-advance, and webhook tools over the Model Context Protocol so Cursor, Claude Code, and other agents can drive sandboxes without shell scripts. Works with <a href="https://cartographer.molar.it">Cartographer</a> and <a href="https://guard.molar.it">Guard</a> in the Molar suite.</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="container">
@@ -845,8 +930,9 @@
       <div>
         <h5>Developers</h5>
         <a href="https://molar.it/docs">Docs</a>
-        <a href="#">CLI · molar clones</a>
-        <a href="#">MCP server</a>
+        <a href="https://molar.it/docs/clones/stripe">Stripe clone</a>
+        <a href="https://molar.it/docs/clones/twilio">Twilio clone</a>
+        <a href="https://molar.it/blog/test-stripe-without-real-cards">Stripe testing guide</a>
         <a href="https://github.com/pratikranaa/molar-it">GitHub</a>
         <a href="#">Status</a>
       </div>
@@ -862,6 +948,18 @@
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How is Clones different from WireMock or MSW?","acceptedAnswer":{"@type":"Answer","text":"WireMock and MSW are hand-written HTTP stubs. Clones are vendor-faithful implementations of Stripe, Twilio, Clerk, and S3 with signed webhooks, virtual clocks, and world snapshots."}},
+    {"@type":"Question","name":"Can I test Stripe without Stripe test-mode keys?","acceptedAnswer":{"@type":"Answer","text":"Yes. Point your SDK at a clone tenant with no Stripe account, no sk_test keys, no network calls, and no rate limits."}},
+    {"@type":"Question","name":"Do clones work offline in CI?","acceptedAnswer":{"@type":"Answer","text":"Clones run locally, in CI, or air-gapped on-prem. Each worker gets an isolated tenant with deterministic IDs."}},
+    {"@type":"Question","name":"What does MCP-native mean?","acceptedAnswer":{"@type":"Answer","text":"Clones expose spawn, snapshot, clock-advance, and webhook tools over the Model Context Protocol for AI coding agents."}}
+  ]
+}
+</script>
 <script src="/waitlist-modal.js"></script>
 </body>
 </html>

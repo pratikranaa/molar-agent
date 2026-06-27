@@ -1,33 +1,55 @@
-# Google Search Console — Molar (molar.it)
+# Google Search Console — Molar (molar.it + surfaces)
 
 ## 1. Verify domain
 1. Go to https://search.google.com/search-console
-2. Add property: **URL prefix** `https://molar.it` (or Domain `molar.it` via DNS TXT)
+2. Add property: **Domain** `molar.it` via DNS TXT (recommended — covers all subdomains)
+   - OR add URL-prefix properties for each surface (see keyword-map.txt)
 3. Verify via DNS (recommended) or HTML file upload
 
 ## 2. Submit sitemap
 - URL: `https://molar.it/sitemap.xml`
+- Includes: main site, 4 surface subdomains, 28 `/docs/clones/:slug` pages
+- Regenerate after clone catalog changes: `node scripts/gen-sitemap.mjs`
 - Search Console → Sitemaps → paste URL → Submit
 
 ## 3. Request indexing (after deploy)
 Inspect each URL → Request indexing:
+
+**Main site**
 - https://molar.it/
 - https://molar.it/qa-agent
 - https://molar.it/docs
-- https://molar.it/thesis
-- https://molar.it/vs/cypress
 - https://molar.it/vs/playwright
 - https://molar.it/integrations/github-actions
+- https://molar.it/blog/test-stripe-without-real-cards
+
+**Surface subdomains**
+- https://cartographer.molar.it/
+- https://clones.molar.it/
+- https://guard.molar.it/
+- https://trace.molar.it/
+
+**Top clone docs**
+- https://molar.it/docs/clones/stripe
+- https://molar.it/docs/clones/twilio
+- https://molar.it/docs/clones/github
+- https://molar.it/docs/clones/slack
 
 ## 4. Monitor queries (weekly)
-Track these in Performance → Search results:
-- molar.it
-- molar qa
-- molar qa agent
-- molar testing
-- autonomous qa agent
+See `keyword-map.txt` for per-surface target queries.
+
+Branded (all surfaces):
+- molar.it, molar qa, molar clones, molar cartographer, molar guard, molar trace
 
 Do NOT obsess over bare `molar` (dental/chemistry noise).
 
 ## 5. Fix issues tab
 Resolve any: Page not indexed, Crawled not indexed, Redirect errors, Canonical conflicts.
+
+## 6. OG images (manual asset follow-up)
+Surface pages reference per-product OG images that must exist at:
+- https://molar.it/og-clones.png
+- https://molar.it/og-cartographer.png
+- https://molar.it/og-guard.png
+- https://molar.it/og-trace.png
+(1200×630 each; until uploaded, social shares fall back to broken image — create and deploy)

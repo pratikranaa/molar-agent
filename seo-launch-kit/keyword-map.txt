@@ -1,0 +1,92 @@
+# Molar surface keyword map — SEO positioning (2026-06)
+
+Use this when writing content, monitoring GSC, or briefing agents.
+Goal: rank #1 per surface for category-intent queries (not bare "molar").
+
+---
+
+## Clones — clones.molar.it
+
+**Category:** API mocking · service virtualization · vendor test sandboxes
+
+| Competitors (who ranks today) | WireMock, WireMock Cloud, MSW, Mountebank, Microcks, MockServer, Hoverfly, Prism, emulate.dev, FetchSandbox, localstripe, Keploy |
+|---|---|
+| **Primary queries** | api mocking tool, service virtualization, stripe test sandbox, test stripe without test keys, twilio test mode alternative, wiremock alternative, offline api mocking ci |
+| **Long-tail** | mcp api mocking, stateful stripe mock, signed webhook testing localhost, no rate limit api sandbox, ai agent api testing, fintech integration testing sandbox |
+| **Audiences** | QA engineers, platform eng, fintech/billing teams, AI agent builders, backend devs in CI |
+
+**Molar angle:** Vendor-faithful + stateful (not hand-written stubs). MCP-native. No rate limits. World snapshots + virtual clock.
+
+**Key pages:** /clones, /docs/clones/stripe, /docs/clones/twilio, /blog/test-stripe-without-real-cards
+
+---
+
+## Cartographer — cartographer.molar.it
+
+**Category:** Autonomous QA · app mapping · Playwright test generation
+
+| Competitors | Playwright codegen/agents (planner/generator/healer), Playwright MCP, AegisRunner, Cypress Dashboard, QA Wolf, Autonoma, Mabl, Testim |
+|---|---|
+| **Primary queries** | autonomous qa, playwright test generation, agentic crawl, app mapping tool, e2e test ai, playwright codegen alternative |
+| **Long-tail** | crawl website generate playwright tests, ai writes playwright tests, site graph qa, mcp browser testing, map spa routes automatically |
+| **Audiences** | QA engineers, frontend leads, startups without dedicated QA, teams shipping AI-generated code |
+
+**Molar angle:** Site graph (not just specs). Owned export pipeline. Works with Clones for Stripe/email flows. Budget-capped production crawl.
+
+**Key pages:** /cartographer, /vs/playwright, /integrations/github-actions
+
+---
+
+## Guard — guard.molar.it
+
+**Category:** PR gating · production synthetics · deployment gates · auto-remediation
+
+| Competitors | Checkly, Datadog Synthetics, Better Stack, Grafana k6, LiveGate, Sematext, StatusCake, AutoGuard-style agentic gates |
+|---|---|
+| **Primary queries** | pr gating ci, production synthetic monitoring, deployment quality gate, github required status check testing, synthetic monitoring playwright |
+| **Long-tail** | affected test selection pr, safe production synthetics no real users, auto fix pr on test failure, ci deployment gate checkout flow, mender auto remediation |
+| **Audiences** | DevOps, platform eng, eng managers, teams with AI-generated PR volume, release engineers |
+
+**Molar angle:** Affected-scenario graph (7 not 47). Cloned vendors in prod checks. Mender fix PRs. Trace on failure.
+
+**Key pages:** /guard, /integrations/github-actions, /clones (safe synthetics story)
+
+---
+
+## Trace — trace.molar.it
+
+**Category:** Test replay · forensic debugging · Playwright trace alternative
+
+| Competitors | Playwright Trace Viewer / UI Mode, Replay.io, BrowserTrace, heal-playwright-tracer, Langfuse/LangSmith (agent traces), Sentry session replay (different category) |
+|---|---|
+| **Primary queries** | playwright trace alternative, test failure replay, flaky test debugging, forensic test debugging, ci test debugger |
+| **Long-tail** | replay playwright test without rerunning, layer 2 test replay, agent test failure debugger, diff test run against green, mcp test debugging |
+| **Audiences** | QA engineers, SDETs, AI agent builders debugging browser agents, platform teams tired of re-running suites |
+
+**Molar angle:** Five-ribbon forensic timeline. Layer 2 replay with clone state. Debugger AI. Agent-era (not just locator traces).
+
+**Key pages:** /trace, /vs/playwright
+
+---
+
+## GSC property checklist (subdomains)
+
+Add each as URL-prefix property OR use Domain property `molar.it`:
+
+1. https://molar.it/
+2. https://cartographer.molar.it/
+3. https://clones.molar.it/
+4. https://guard.molar.it/
+5. https://trace.molar.it/
+
+Submit sitemap once: https://molar.it/sitemap.xml (includes all surfaces + 28 clone doc URLs)
+
+Request indexing after deploy:
+- All 4 surface homepages
+- Top clone docs: stripe, twilio, github, slack, linear
+- /vs/playwright, /integrations/github-actions, /blog/test-stripe-without-real-cards
+
+Weekly queries to track (Performance → Search results):
+- Per surface: 3–5 primary queries from tables above
+- Branded: molar clones, molar cartographer, molar guard, molar trace
+- Avoid optimizing for bare "molar" (dental noise)
