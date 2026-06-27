@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cartographer — by Molar</title>
-<link rel="canonical" href="https://molar.it/cartographer" />
+<link rel="canonical" href="https://cartographer.molar.it/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -224,10 +224,6 @@
 <body>
 <link rel="stylesheet" href="/styles.css" />
 <div class="paper-grain"></div>
-<div id="nav-root"></div>
-<style>.surface-hide-local-nav nav.top{display:none!important}</style>
-<div class="surface-hide-local-nav">
-
 
 <!-- announce -->
 <div class="announce">
@@ -237,6 +233,28 @@
     <span style="margin-left:6px">→</span>
   </div>
 </div>
+
+<!-- nav -->
+<nav class="top">
+  <div class="container inner">
+    <a href="/" class="brand">
+      <span class="glyph"></span>
+      <span>cartographer</span>
+      <span class="sub">by Molar</span>
+    </a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#surfaces">Cartographer + Molar</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://molar.it/docs">Docs</a>
+      <a href="#thesis">Thesis</a>
+    </div>
+    <div class="cta">
+      <a href="https://app.molar.it" class="btn btn-ghost">Sign in</a>
+      <a href="https://app.molar.it" class="btn btn-primary">Start mapping →</a>
+    </div>
+  </div>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -354,17 +372,17 @@
       </div>
       <div class="surface">
         <span class="num">02 / SANDBOX</span>
-        <h4>Clones</h4>
+        <h4><a href="https://clones.molar.it">Clones</a></h4>
         <p>Stateful mirrors of Stripe, SendGrid, Twilio, Postgres. Real APIs without real side effects.</p>
       </div>
       <div class="surface">
         <span class="num">03 / RUNTIME</span>
-        <h4>Guard</h4>
+        <h4><a href="https://guard.molar.it">Guard</a></h4>
         <p>Runs Cartographer's flows against live production on a schedule. Catches bugs before users do.</p>
       </div>
       <div class="surface">
         <span class="num">04 / DEBUGGER</span>
-        <h4>Trace</h4>
+        <h4><a href="https://trace.molar.it">Trace</a></h4>
         <p>Replay any failed run like a debugger. Diff against last green to see exactly what changed.</p>
       </div>
     </div>
@@ -728,15 +746,15 @@
       </div>
       <div>
         <h5>Molar</h5>
-        <a href="/cartographer">Cartographer</a>
-        <a href="/clones">Clones</a>
-        <a href="/guard">Guard</a>
-        <a href="/trace">Trace</a>
+        <a href="https://cartographer.molar.it">Cartographer</a>
+        <a href="https://clones.molar.it">Clones</a>
+        <a href="https://guard.molar.it">Guard</a>
+        <a href="https://trace.molar.it">Trace</a>
         <a href="#thesis">Thesis</a>
       </div>
       <div>
         <h5>Developers</h5>
-        <a href="/docs">Docs</a>
+        <a href="https://molar.it/docs">Docs</a>
         <a href="#">CLI</a>
         <a href="#">MCP</a>
         <a href="https://github.com/pratikranaa/molar-it">GitHub</a>
@@ -749,13 +767,6 @@
     </div>
   </div>
 </footer>
-
-</div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-  <script type="text/babel" src="/nav.jsx"></script>
-  <script type="text/babel" src="/nav-boot.jsx"></script>
 
 </body>
 </html>

@@ -3,45 +3,44 @@
 const PRIMARY_NAV = [
   { href: '/#how', label: 'How it works' },
   { href: '/#pricing', label: 'Pricing' },
-  { href: '/#faq', label: 'FAQ' },
   { href: '/blog', label: 'Blog' },
-  { href: '/docs', label: 'Docs' },
-  { href: '/thesis', label: 'Thesis' },
 ];
 
-// Four Molar surfaces — each has its own landing page at /cartographer, etc.
+const MORE_NAV = [
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/thesis', label: 'Thesis' },
+  { href: '/qa-agent', label: 'QA Agent' },
+  { href: '/vs/cypress', label: 'vs Cypress' },
+  { href: '/vs/playwright', label: 'vs Playwright' },
+  { href: '/integrations/github-actions', label: 'GitHub Actions' },
+];
+
 const PRODUCTS_NAV = [
   {
-    href: '/cartographer',
+    href: 'https://cartographer.molar.it',
     label: 'Cartographer',
     tag: '01 / Agent',
     desc: 'Map your app and author critical-path tests from live traces.',
   },
   {
-    href: '/clones',
+    href: 'https://clones.molar.it',
     label: 'Clones',
     tag: '02 / Sandbox',
     desc: 'Stateful mirrors of Stripe, email, S3, and ~28 more services.',
   },
   {
-    href: '/guard',
+    href: 'https://guard.molar.it',
     label: 'Guard',
     tag: '03 / Runtime',
     desc: 'PR gates and continuous production checks before users report bugs.',
   },
   {
-    href: '/trace',
+    href: 'https://trace.molar.it',
     label: 'Trace',
     tag: '04 / Debugger',
     desc: 'Replay any failed run and diff against the last green trace.',
   },
-];
-
-const MORE_NAV = [
-  { href: '/qa-agent', label: 'QA Agent' },
-  { href: '/vs/cypress', label: 'vs Cypress' },
-  { href: '/vs/playwright', label: 'vs Playwright' },
-  { href: '/integrations/github-actions', label: 'GitHub Actions' },
 ];
 
 function isHomePath() {
@@ -188,17 +187,10 @@ function Nav() {
           </div>
 
           <div className="nav-links nav-links--desktop">
-            {PRIMARY_NAV.slice(0, 1).map((item) => (
-              <a key={item.href} href={item.href} onClick={(e) => onNavClick(e, item.href)}>
-                {item.label}
-              </a>
-            ))}
+            <a href="/#how" onClick={(e) => onNavClick(e, '/#how')}>How it works</a>
             <NavDropdown label="Products" items={PRODUCTS_NAV} rich />
-            {PRIMARY_NAV.slice(1).map((item) => (
-              <a key={item.href} href={item.href} onClick={(e) => onNavClick(e, item.href)}>
-                {item.label}
-              </a>
-            ))}
+            <a href="/#pricing" onClick={(e) => onNavClick(e, '/#pricing')}>Pricing</a>
+            <a href="/blog" onClick={(e) => onNavClick(e, '/blog')}>Blog</a>
             <NavDropdown label="More" items={MORE_NAV} />
           </div>
 
@@ -243,11 +235,7 @@ function Nav() {
         <div className="nav-mobile-sheet">
           <div className="nav-mobile-inner">
             <div className="nav-links nav-mobile-links">
-              {PRIMARY_NAV.map((item) => (
-                <a key={item.href} href={item.href} onClick={(e) => onNavClick(e, item.href)}>
-                  {item.label}
-                </a>
-              ))}
+              <a href="/#how" onClick={(e) => onNavClick(e, '/#how')}>How it works</a>
               <span className="nav-mobile-group-label">Products</span>
               {PRODUCTS_NAV.map((item) => (
                 <a key={item.href} href={item.href} onClick={(e) => onNavClick(e, item.href)} className="nav-mobile-product-link">
@@ -255,6 +243,8 @@ function Nav() {
                   <span>{item.label}</span>
                 </a>
               ))}
+              <a href="/#pricing" onClick={(e) => onNavClick(e, '/#pricing')}>Pricing</a>
+              <a href="/blog" onClick={(e) => onNavClick(e, '/blog')}>Blog</a>
               <span className="nav-mobile-group-label">More</span>
               {MORE_NAV.map((item) => (
                 <a key={item.href} href={item.href} onClick={(e) => onNavClick(e, item.href)}>

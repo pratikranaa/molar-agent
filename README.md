@@ -9,6 +9,10 @@ This repo contains the marketing site source (`molar.it`). Product code lives in
 | | |
 |---|---|
 | **Website** | https://molar.it |
+| **Cartographer** | https://cartographer.molar.it |
+| **Clones** | https://clones.molar.it |
+| **Guard** | https://guard.molar.it |
+| **Trace** | https://trace.molar.it |
 | **QA Agent** | https://molar.it/qa-agent |
 | **Docs** | https://molar.it/docs |
 | **App** | https://app.molar.it |
@@ -28,6 +32,8 @@ python3 -m http.server 8080
 ```
 
 Deploy: `vercel --prod` (Vercel project `molar` → molar.it).
+
+Surface landings use subdomains (`cartographer.molar.it`, etc.). Add each as a domain on the Vercel project and point DNS (CNAME to `cname.vercel-dns.com`). Old paths (`/cartographer`, …) 301 to the subdomain.
 
 ## SEO / launch
 

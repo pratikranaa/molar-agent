@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/cartographer", "destination": "https://cartographer.molar.it", "permanent": true },
+    { "source": "/clones", "destination": "https://clones.molar.it", "permanent": true },
+    { "source": "/guard", "destination": "https://guard.molar.it", "permanent": true },
+    { "source": "/trace", "destination": "https://trace.molar.it", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/thesis", "destination": "/thesis.html" },
@@ -8,9 +14,25 @@
     { "source": "/integrations/github-actions", "destination": "/integrations/github-actions.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/test-stripe-without-real-cards", "destination": "/blog/test-stripe-without-real-cards.html" },
-    { "source": "/cartographer", "destination": "/cartographer/index.html" },
-    { "source": "/guard", "destination": "/guard/index.html" },
-    { "source": "/clones", "destination": "/clones/index.html" },
-    { "source": "/trace", "destination": "/trace/index.html" }
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "cartographer.molar.it" }],
+      "destination": "/cartographer/index.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "clones.molar.it" }],
+      "destination": "/clones/index.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "guard.molar.it" }],
+      "destination": "/guard/index.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "trace.molar.it" }],
+      "destination": "/trace/index.html"
+    }
   ]
 }

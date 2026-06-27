@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guard by Molar — Every merge safe. Every deploy watched.</title>
-<link rel="canonical" href="https://molar.it/guard" />
+<link rel="canonical" href="https://guard.molar.it/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -100,10 +100,6 @@ section.light .subsys .s .viz .err { color: #ec7a5c; }
 <body>
 <link rel="stylesheet" href="/styles.css" />
 <div class="paper-grain"></div>
-<div id="nav-root"></div>
-<style>.surface-hide-local-nav nav.top{display:none!important}</style>
-<div class="surface-hide-local-nav">
-
 
 <!-- ============ Announce ============ -->
 <div class="announce"><div class="in container"><span class="pill">new</span> Guard is now generally available — <a href="https://app.molar.it" style="color:var(--green);margin-left:4px">explore the dashboard →</a></div></div>
@@ -117,7 +113,7 @@ section.light .subsys .s .viz .err { color: #ec7a5c; }
     <a href="#mender">Mender</a>
     <a href="#monitoring">Monitoring</a>
     <a href="#pricing">Pricing</a>
-    <a href="/docs" target="_blank">Docs</a>
+    <a href="https://molar.it/docs" target="_blank">Docs</a>
   </div>
   <div class="cta">
     <a class="btn btn-ghost" href="https://app.molar.it">Dashboard ↗</a>
@@ -481,7 +477,7 @@ section.light .subsys .s .viz .err { color: #ec7a5c; }
     </div>
     <div>
       <h5>Product</h5>
-      <a href="/cartographer">Cartographer</a><a href="/clones">Clones</a><a href="#" style="color:var(--green)">Guard</a><a href="/trace">Trace</a><a href="#pricing">Pricing</a><a href="#">Changelog</a>
+      <a href="https://cartographer.molar.it">Cartographer</a><a href="https://clones.molar.it">Clones</a><a href="/" style="color:var(--green)">Guard</a><a href="https://trace.molar.it">Trace</a><a href="#pricing">Pricing</a><a href="#">Changelog</a>
     </div>
     <div>
       <h5>Resources</h5>
@@ -656,13 +652,6 @@ const tweakRoot = document.createElement('div');
 document.body.appendChild(tweakRoot);
 ReactDOM.createRoot(tweakRoot).render(<LandingTweaks />);
 </script>
-
-</div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-  <script type="text/babel" src="/nav.jsx"></script>
-  <script type="text/babel" src="/nav-boot.jsx"></script>
 
 </body>
 </html>

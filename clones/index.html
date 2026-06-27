@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clones — by Molar</title>
-<link rel="canonical" href="https://molar.it/clones" />
+<link rel="canonical" href="https://clones.molar.it/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -294,10 +294,6 @@
 <body>
 <link rel="stylesheet" href="/styles.css" />
 <div class="paper-grain"></div>
-<div id="nav-root"></div>
-<style>.surface-hide-local-nav nav.top{display:none!important}</style>
-<div class="surface-hide-local-nav">
-
 
 <!-- announce -->
 <div class="announce">
@@ -307,6 +303,28 @@
     <span style="margin-left:6px">→</span>
   </div>
 </div>
+
+<!-- nav -->
+<nav class="top">
+  <div class="container inner">
+    <a href="/" class="brand">
+      <span class="clones-mark"><i></i><i></i></span>
+      <span>clones</span>
+      <span class="sub">by Molar</span>
+    </a>
+    <div class="links">
+      <a href="#features">What it does</a>
+      <a href="#how">How it works</a>
+      <a href="#tour">Dashboard</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://molar.it/docs">Docs</a>
+    </div>
+    <div class="cta">
+      <a href="https://app.molar.it" class="btn btn-ghost">Sign in</a>
+      <a href="https://app.molar.it" class="btn btn-primary">Spawn a clone →</a>
+    </div>
+  </div>
+</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -424,7 +442,7 @@
     <h2 class="sec-title">One surface of four. The one your tests run against.</h2>
     <p class="sec-lede">Molar is a release guard with four surfaces. Clones are stateful mirrors of every third party your app touches — so Cartographer's agent, Guard's checks, and Trace's replays never charge a real card or email a real customer.</p>
     <div class="surfaces">
-      <a href="/cartographer" class="surface">
+      <a href="https://cartographer.molar.it" class="surface">
         <span class="num">01 / AGENT</span>
         <h4>Cartographer</h4>
         <p>Maps your app, plans goals, drives a real browser, writes Playwright tests you own.</p>
@@ -434,16 +452,16 @@
         <h4>Clones</h4>
         <p>Stateful, time-travellable clones of Stripe, Twilio, Email, Auth, S3. World snapshots across vendors.</p>
       </div>
-      <div class="surface">
+      <a href="https://guard.molar.it" class="surface">
         <span class="num">03 / RUNTIME</span>
         <h4>Guard</h4>
         <p>Runs Cartographer's flows against live production on a schedule. Catches bugs before users do.</p>
-      </div>
-      <div class="surface">
+      </a>
+      <a href="https://trace.molar.it" class="surface">
         <span class="num">04 / DEBUGGER</span>
         <h4>Trace</h4>
         <p>Replay any failed run like a debugger. Diff against last green to see exactly what changed.</p>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -794,15 +812,15 @@
       </div>
       <div>
         <h5>Molar</h5>
-        <a href="/cartographer">Cartographer</a>
-        <a href="/clones">Clones</a>
-        <a href="/guard">Guard</a>
-        <a href="/trace">Trace</a>
+        <a href="https://cartographer.molar.it">Cartographer</a>
+        <a href="https://clones.molar.it">Clones</a>
+        <a href="https://guard.molar.it">Guard</a>
+        <a href="https://trace.molar.it">Trace</a>
         <a href="/thesis">Thesis</a>
       </div>
       <div>
         <h5>Developers</h5>
-        <a href="/docs">Docs</a>
+        <a href="https://molar.it/docs">Docs</a>
         <a href="#">CLI · molar clones</a>
         <a href="#">MCP server</a>
         <a href="https://github.com/pratikranaa/molar-it">GitHub</a>
@@ -815,13 +833,6 @@
     </div>
   </div>
 </footer>
-
-</div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-  <script type="text/babel" src="/nav.jsx"></script>
-  <script type="text/babel" src="/nav-boot.jsx"></script>
 
 </body>
 </html>

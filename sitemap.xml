@@ -43,25 +43,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://molar.it/cartographer</loc>
+    <loc>https://cartographer.molar.it/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://molar.it/clones</loc>
+    <loc>https://clones.molar.it/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://molar.it/guard</loc>
+    <loc>https://guard.molar.it/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://molar.it/trace</loc>
+    <loc>https://trace.molar.it/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
